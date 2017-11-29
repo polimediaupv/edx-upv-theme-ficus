@@ -1,0 +1,37 @@
+<%page expression_filter="h"/>
+<%namespace name='static' file='static_content.html'/>
+<%! from django.utils.translation import ugettext as _ %>
+
+
+<section id="change_cookies" class="modal">
+  <div class="inner-wrapper" role="dialog" aria-labelledby="change_cookies_title">
+
+
+    <header>
+      <h2>
+        <span id="change_cookies_title">Cambiar Cookies</span>
+        <span class="sr">,
+          window open
+        </span>
+      </h2>
+      <hr>
+    </header>
+    <div id="change_cookies_body">
+      <form id="change_cookies_form">
+        <div id="change_cookies_error" class="modal-form-error"> </div>
+        <fieldset>
+          <div class="input-group">
+            <label>Este sitio web utiliza cookies propias y de terceros para optimizar tu navegación, adaptarse a tus preferencias y realizar labores analíticas.</label>
+          </div>
+          <section>
+            <p>Aceptas nuestra <a class="cl" href="${marketing_link('TOS')}#cookies">politica de cookies</a>?.</p>
+          </section>
+          <div class="">
+              <input type="button" value="${_('Yes')}" id="cookiesaccept"/>
+              <input type="button" value="${_('No')}" id="cookiesdeny"/>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</section>

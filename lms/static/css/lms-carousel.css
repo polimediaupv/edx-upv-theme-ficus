@@ -1,0 +1,44 @@
+.multi-item-carousel .carousel-inner > .item {
+  -webkit-transition: 500ms ease-in-out left;
+  transition: 500ms ease-in-out left;
+}
+.multi-item-carousel .carousel-inner .active.left {
+  left: -33%;
+}
+.multi-item-carousel .carousel-inner .active.right {
+  left: 33%;
+}
+.multi-item-carousel .carousel-inner .next {
+  left: 33%;
+}
+.multi-item-carousel .carousel-inner .prev {
+  left: -33%;
+}
+
+div#carousel-upv.carousel.slide {
+        height: 250px;
+}
+
+.carousel-courses-highlighted a.carousel-control-prev {
+        color: rgb(100, 100, 100);
+        font-size: 30px;
+        line-height: 1;
+}
+
+.carousel-courses-highlighted a.carousel-control-next {
+        color: rgb(100, 100, 100);
+        font-size: 30px;
+        line-height: 1;
+}
+
+.carousel-courses-edxorg a.carousel-control-prev {
+        color: rgb(100, 100, 100);
+        font-size: 30px;
+        line-height: 1;
+}
+
+.carousel-courses-edxorg a.carousel-control-next {
+        color: rgb(100, 100, 100);
+        font-size: 30px;
+        line-height: 1;
+}

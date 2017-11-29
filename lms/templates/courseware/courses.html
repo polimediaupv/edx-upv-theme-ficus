@@ -1,0 +1,45 @@
+<%!
+  import json
+  from django.utils.translation import ugettext as _
+  from openedx.core.djangolib.js_utils import dump_js_escaped_json
+%>
+<%inherit file="../main.html" />
+<%
+  course_discovery_enabled = settings.FEATURES.get('ENABLE_COURSE_DISCOVERY')
+%>
+
+<%namespace name='static' file='../static_content.html'/>
+
+<%block name="pagetitle">${_("Courses")}</%block>
+
+  <%
+      courses_filtered=[]
+      for course in courses:
+
+		if course.display_name_with_default ==request.GET.get('search_query'):
+                        courses_filtered.append(course)           
+                endif
+
+      courses_filtered = sorted(courses_filtered, key=lambda course: course.start)
+  %>
+
+${_("{course_number} Course Info").format(course_number=course.display_number_with_default)}
+${request.GET.get('search_query')}
+${course.display_name_with_default}
+${course.display_number_with_default==request.GET.get('search_query')}
+<main id="main" aria-label="Content" tabindex="-1">
+    <section class="find-courses">
+      <section class="courses-container">
+
+        <div class="courses no-course-discovery" role="region" aria-label="${_('List of Courses')}">
+          <ul class="courses-listing">
+            %for course in courses_filtered:
+            <li class="courses-listing-item">
+              <%include file="../course.html" args="course=course" />
+            </li>
+            %endfor
+          </ul>
+        </div>
+      </section>
+    </section>
+</main>
