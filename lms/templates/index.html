@@ -14,10 +14,10 @@ from openedx.core.djangolib.markup import HTML, Text
     <section class="home">
       <header>
 	<%include file="${static.get_template_path('search_courses.html')}" />
- 	<%include file="${static.get_template_path('carousel_upv.html')}" />
+ 	<%include file="${static.get_template_path('carousel.html')}" />
       </header>
       <%include file="${courses_list}" />
-      <%include file="${static.get_template_path('moocs_definition2.html')}" />
+      <%include file="${static.get_template_path('moocs_definition.html')}" />
       <%include file="${static.get_template_path('twitter_news.html')}" />
     </section>
 </main>

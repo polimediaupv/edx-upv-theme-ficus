@@ -16,7 +16,13 @@
         transform: translate3d(0,-100%, 0);
 }
 
-.carousel-item .user{
+#upvx-twitter {
+   max-width: 80%;
+   margin-right: auto;
+   margin-left: auto;
+}
+
+#upvxProfile .carousel-item .user{
     color: #66b366;
     font-size: 13px;
     display: block;
@@ -25,22 +31,27 @@
     white-space: nowrap;
 }
 
-.carousel-item .tweet{
+#upvxProfile .carousel-item .tweet{
     color:#919191;
     height: 70px;
 }
 
-.carousel-item .timePosted{
+#upvxProfile .carousel-item .timePosted{
     color:#3c3c3c;
     display: block;
     font-size: 12px;
     font-weight: 600;    
 }
 
-.carousel-item{
+#upvxProfile .carousel-item{
     box-shadow: 0 1px 4px 0 rgba(154,154,154,0.4);
-    background: #fff;
+    background: #ededed;
     border-radius: 10px;    
     margin-left: auto;
     margin-right: auto;    
+    padding: 10px;
+}
+
+#upvxProfile .carousel-inner {
+    padding: 0;
 }

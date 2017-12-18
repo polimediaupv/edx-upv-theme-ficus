@@ -1,0 +1,16 @@
+<%def name="online_help_token()"><% return "course" %></%def>
+<%namespace name='static' file='../static_content.html'/>
+<%!
+from django.utils.translation import ugettext as _
+from django.core.urlresolvers import reverse
+from opaque_keys.edx.locations import SlashSeparatedCourseKey
+from courseware.courses import get_course_about_section, get_course_by_id
+from django.conf import settings
+from edxmako.shortcuts import marketing_link
+from openedx.core.lib.courses import course_image_url
+%>
+<%page args="course" expression_filter="h"/>
+<%courseData = get_course_by_id(course.id)%>
+<meta property="og:description" content="${get_course_about_section(request,courseData, 'short_description') | h }" />
+
+<meta property="og:overview" content="${get_course_about_section(request,courseData, 'overview') | h }" />

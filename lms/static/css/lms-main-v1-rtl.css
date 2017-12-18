@@ -14928,7 +14928,7 @@ body.error {
   text-shadow: none; }
 
 /* line 1, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
-.header-global {
+header-global {
   border-bottom: 1px solid #919191;
   box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1);
   background: white;
@@ -14949,6 +14949,16 @@ body.error {
   margin: 17px 0 17px 24px; }
 
 /* line 22, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+.header-global .nav-courseware li {
+  display: block;
+  padding: 15px 15px 0px 0px;
+  text-align: center; }
+
+/* line 28, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+#login-btn {
+  color: #c00; }
+
+/* line 32, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 #DIVsep1 {
   width: 100%;
   margin: 0px;
@@ -14956,43 +14966,97 @@ body.error {
   background-color: #CC0000;
   height: 10px; }
 
-/* line 30, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 40, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .courses-container {
-  max-width: 90%;
-  margin-top: 30px; }
+  max-width: 80%;
+  margin-top: 30px;
+  color: #646464;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-style: normal; }
 
-/* line 35, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 50, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+.courses-container .courses {
+  width: 950px;
+  max-width: 1190px; }
+
+/* line 55, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .courses-container .courses .course {
   border-bottom: 0px;
-  box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.125); }
-
-/* line 40, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
-.courses-container .courses .course .course-info {
-  height: 180px; }
-
-/* line 44, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
-.courses-container .courses .course .course-info .course-title {
-  margin: 5px 0 10px 0;
-  height: 60px; }
-
-/* line 49, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
-.highlighted-courses .courses {
+  box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.125);
+  margin-bottom: 30px;
   padding: 0 0 0 0; }
 
-/* line 53, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
-.course-header {
-  z-index: 3;
-  opacity: 0.9;
-  background-color: #d4d4d4; }
+/* line 62, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+.courses-container .courses .course .course-info {
+  margin-top: -48px;
+  transition: all 0.2s ease; }
 
-/* line 59, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
-.course-info {
-  margin-top: 0px;
+/* line 67, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+.courses-container .courses .course .course-info:hover {
+  margin-top: -200px; }
+
+/* line 71, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+.courses-container .meta-info {
+  background: rgba(0, 0, 0, 0.75);
+  bottom: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.15);
+  position: absolute;
+  right: -4px;
+  height: 30px;
   -webkit-transition: all 0.2s ease;
   -moz-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
   transition: all 0.2s ease; }
 
-/* line 67, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
-.course-info:hover {
-  margin-top: -178px; }
+/* line 87, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+.courses-container .meta-info:hover {
+  opacity: 0.1; }
+
+/* line 91, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+.courses-container .courses .course .meta-info p {
+  color: #fff;
+  font-style: italic;
+  line-height: 1.2em;
+  padding: 4px 12px 5px; }
+
+/* line 98, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+#courses-container img {
+  width: 100%;
+  height: 200px; }
+
+/* line 103, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+.courses-container .courses .course .course-info .course-title {
+  margin: 5px 0 10px 0;
+  height: 60px; }
+
+/* line 108, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+.course {
+  width: 276px !important; }
+
+/* line 112, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+.course-header {
+  z-index: 3;
+  opacity: 0.8;
+  background-color: #d5d5d5;
+  color: #646464; }
+
+/* line 119, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+.course-header .title-link {
+  margin-top: 4px;
+  color: #2e2e2e;
+  font-family: "Source Sans", "Open Sans", Verdana, Geneva, sans-serif, sans-serif;
+  font-size: 0.8em;
+  font-weight: 700;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.6);
+  text-overflow: ellipsis;
+  text-transform: none;
+  vertical-align: middle; }
+
+/* line 131, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+.course-header .info-link {
+  margin-top: 8px; }

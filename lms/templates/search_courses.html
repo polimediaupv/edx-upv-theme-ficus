@@ -1,72 +1,27 @@
 <%page expression_filter="h"/>
 <%namespace name='static' file='static_content.html'/>
 <%! from django.utils.translation import ugettext as _ %>
-<div style="
-    position: absolute;
-    z-index: 1;
-    width: 80%;
-    padding-top: 15%;
-    /* padding-right: 10%; */
-    padding-left: 20%;
-">
+<link rel="stylesheet" href="${static.url("css/lms-search-courses.css")}">
 
-<label for="home-search" class="search-bar-label" style="
-    z-index: 10;
-    position: absolute;
-    border-right: 1px solid #ccc;
-    padding: 11px 10px;
-    font-size: 1.125em;
-    font-weight: 400;">
-Buscar Cursos
-</label>
-<input type="text" id="home-search" value="" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-haspopup="false" class="" placeholder="" spellcheck="false" style="
-    padding: 10px 0px 10px 148px;
-    width: 100%;
-    height: 46px;
-    border: 2px solid #fff;
-    border-radius: 5px;
-    font-size: 1.25em;
-    display: inline-flex;
-">
-<button id="home-search-button" type="submit" style="
-    position: absolute;
-    right: 0px;
-    bottom: -3px;
-    background: none;
-    background-image: none;
-    background-position-x: initial;
-    background-position-y: initial;
-    background-size: initial;
-    background-repeat-x: initial;
-    background-repeat-y: initial;
-    background-attachment: initial;
-    background-origin: initial;
-    background-clip: initial;
-    background-color: initial;
-    color: #2968aa;
-    border: none;
-    width: auto;
-    display: inline-block;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    transform: translate(0,0);
-    font-size: 1.25em;
-    padding: 10px 20px;
-    font-weight: 700;
-    text-align: center;
-    display: inline-block;
-" class="btn btn-transparent edit-submit form-submit js-search-button"><span class="sr">Submit a course search</span><span class="icon fa fa-search" aria-hidden="true"></span>
-</button>
-</div>
+<section id="course-search">
+	<header>
+	</header>
+	<div class="search">
+		<label class="search-bar-label">Buscar:</label>
+		<input type="text" id="search-text" class="search-input">
+		<button id="search-button" class="btn btn-transparent search-submit" type="submit">
+			<span id="search-icon" class="search-icon fa fa-search" aria-hidden="true"></span>
+		</button>
+	</div>
 
-<script>
-        $("#home-search").keypress(function(e) {
-                 if(e.which == 13) {
-                 $("#home-search-button").click();
-                }
+        <script>
+        	$("#search-text").keypress(function(e) {
+                  if(e.which == 13) {
+                    $("#search-button").click();
+                  }
                 });
-        $("#home-search-button").click(function(){
-                 window.location = '/courses?search_query=' + $("#home-search")[0].value;
-        });
-</script>
+        	$("#search-button").click(function(){
+                   window.location = '/courses?search_query=' + $("#search-text")[0].value;
+        	});
+	</script>
+</section>

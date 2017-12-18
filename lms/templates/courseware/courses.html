@@ -1,45 +1,155 @@
 <%!
   import json
   from django.utils.translation import ugettext as _
+  from django.utils import timezone
+  import datetime
   from openedx.core.djangolib.js_utils import dump_js_escaped_json
 %>
 <%inherit file="../main.html" />
 <%
   course_discovery_enabled = settings.FEATURES.get('ENABLE_COURSE_DISCOVERY')
 %>
-
+<%page expression_filter="h"/>
 <%namespace name='static' file='../static_content.html'/>
+<link rel="stylesheet" href="${static.url("css/bootstrap/bootstrap.min.css")}">
+<script type="text/javascript" src="${static.url("js/bootstrap/bootstrap.bundle.min.js")}"></script>
+<script type="text/javascript" src="${static.url("js/bootstrap/bootstrap.min.js")}"></script>
+<script type="text/javascript" src="${static.url("js/courseSearch.js")}"></script>
+<link rel="stylesheet" href="${static.url("css/lms-courses.css")}">
 
 <%block name="pagetitle">${_("Courses")}</%block>
-
-  <%
-      courses_filtered=[]
-      for course in courses:
-
-		if course.display_name_with_default ==request.GET.get('search_query'):
-                        courses_filtered.append(course)           
-                endif
-
-      courses_filtered = sorted(courses_filtered, key=lambda course: course.start)
-  %>
-
-${_("{course_number} Course Info").format(course_number=course.display_number_with_default)}
-${request.GET.get('search_query')}
-${course.display_name_with_default}
-${course.display_number_with_default==request.GET.get('search_query')}
 <main id="main" aria-label="Content" tabindex="-1">
+<%
+                future=[]
+                past=[]
+                reordered=[]
+		orgs=[]
+                for course in courses:
+		    if course.display_org_with_default not in orgs:
+			orgs.append(course.display_org_with_default)
+                    if course.end == None:
+                        course.end = timezone.now() + datetime.timedelta(days=1)
+                    if course.start > timezone.now():
+                        future.append(course)
+                    else:
+                        past.append(course)
+                future = sorted(future, key=lambda course: course.start)
+                past = sorted(past, key=lambda course: course.start,reverse=True)
+                reordered = future + past
+
+            %>
+<div class="row">
+    <div class="col-md-2 mx-auto">
+	 <div class="search-controls">
+    <label for="home-search" class="search-bar-label" style="
+    z-index: 10;
+    /* position: absolute; */
+    /* border-right: 1px solid #ccc; */
+    padding: 11px 2px;
+    font-size: 1.125em;
+    font-weight: 400;
+    ">
+Buscar Cursos
+</label><input type="text" id="home-search" value="" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-haspopup="false" class="" placeholder="" spellcheck="false" style="
+    width: 100%;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    font-size: 1.25em;
+    display: inline-flex;
+">
+<div>
+<ul style="
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-indent: 0;
+">
+%for org in orgs:
+    <li class>
+	<input class="orgsfilter" type="checkbox" name="${org}" value="${org}" checked>  ${org}
+    </li>
+%endfor
+</ul>
+<script>
+    $('.orgsfilter').change(function() {
+	var orgfilter = $(this)[0].value;
+	if ($(this).is(':checked'))
+	{
+		$(".course-organization").filter(function() {
+                // Matches exact string
+                return $(this).text() === orgfilter;
+                }).parent().parent().parent().parent().parent().parent().show()
+	}
+	else
+	{
+		$(".course-organization").filter(function() {
+                // Matches exact string
+                return $(this).text() === orgfilter;
+                }).parent().parent().parent().parent().parent().parent().hide()
+	}
+    });
+</script>
+</div>
+    </div>
+    </div>
+    <div class="col-md-10 mx-auto">
     <section class="find-courses">
       <section class="courses-container">
 
         <div class="courses no-course-discovery" role="region" aria-label="${_('List of Courses')}">
           <ul class="courses-listing">
-            %for course in courses_filtered:
-            <li class="courses-listing-item">
-              <%include file="../course.html" args="course=course" />
-            </li>
+            %for course in reordered:
+                % if course.display_org_with_default.lower() != "poc" :
+                    <li class="courses-listing-item">
+                        <%include file="../course.html" args="course=course" />
+			<%include file="./about_hide.html" args="course=course"/>
+                    </li>
+                % endif
             %endfor
           </ul>
         </div>
       </section>
     </section>
+    </div>
+    <script>
+	$(document).ready(function() {
+	   searchParams = new URLSearchParams(window.location.search)
+	   query = searchParams.get("search_query");
+           $("#home-search")[0].value=query;
+	   search(query);
+	});
+
+	$( "#home-search" ).keyup(function() {
+		search($("#home-search")[0].value);
+	});
+
+	function search(search_query){
+	$(".courses-listing-item").each(index=>{
+	var shortAuxdiv = document.createElement("div");
+	shortAuxdiv.innerHTML= $($(".courses-listing-item")[index]).find('meta')[0].content
+	var shortDesc = shortAuxdiv.textContent || shortAuxdiv.innerText || "";
+	var descAuxdiv = document.createElement("div");
+        descAuxdiv.innerHTML= $($(".courses-listing-item")[index]).find('meta')[1].content
+        var desc = descAuxdiv.textContent || descAuxdiv.innerText || "";
+	var title = $($($(".courses-listing-item")[index]).find("article")[0]).attr("aria-label")
+	if (title.toLowerCase().includes(search_query.toLowerCase())||desc.toLowerCase().includes(search_query.toLowerCase())||shortDesc.toLowerCase().includes(search_query.toLowerCase())){
+		$($(".courses-listing-item")[index]).css("display","block");
+		console.log("ayuda");
+	}else{
+		$($(".courses-listing-item")[index]).css("display","none");
+	}
+	});
+
+	$('.orgsfilter').each(function(index){
+	if ($('.orgsfilter')[index].checked==false){
+		$(".course-organization").filter(function() {
+        // Matches exact string
+        return $(this).text() === $('.orgsfilter')[index].value;
+                }).parent().parent().parent().parent().parent().parent().hide()
+		}
+	});
+	}
+
+	search();
+    </script>
 </main>
