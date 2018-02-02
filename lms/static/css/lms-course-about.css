@@ -1,0 +1,179 @@
+#about-course-info header.course-profile {
+    margin-top: 0px;
+    padding-top: 0px;
+    width: 100%;
+    background-image: url(/static/upv/images/about-bg.jpg);
+    height: auto;
+}
+
+.course-info .course-sidebar {
+    box-sizing: border-box;
+    float: left;
+    width: 95%;
+    border-radius: 5px;
+    border: whitesmoke;
+    border-style: groove;
+    background-color: white;
+    margin-top: 20px;
+    margin-left: 2.5%;
+}
+
+.toggle-tabs {
+    max-width: 1175px;
+    margin: 0 auto;
+    padding: 0 12.5px;
+    width: 100%;
+    }
+
+
+    .banner-img{
+        width: 450px;
+    }
+
+    .hidden-section{
+        display: none!important;
+    }   
+    @media only screen and (max-width: 767px)
+    {
+        .toggle-tabs{display:none;} 
+        .details section{display:block!important;
+            border-bottom:5px solid #065683;
+        }
+        .details section:after{content:"\f0d8";
+        content: "\f0d8";
+        font-family: "FontAwesome";
+        color: #065683;
+        font-size: 26px;
+        bottom: -12px;
+        position: relative;
+        left: 50%;
+        margin-left: -8px;       
+        }
+    }    
+
+
+
+@media only screen and (min-width: 768px){
+    .tab-nav{
+        font-size: 14px;
+        line-height: 22px;
+        background: white;
+        background-image: none;
+        background-size: cover;
+        box-shadow: 0 1px 80px 0 rgba(0, 0, 0, 0.5);
+        border-bottom: 1px solid #646464;
+        box-shadow: inset 0 1px 5px 0 rgba(0, 0, 0, 0.1);
+        padding-top: 0px;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+
+    }
+   .toggle-tabs{display:block;width:100%;position:relative}
+   ul.toggle-tabs{list-style-type:none;}
+   .toggle-tabs li{float:left;margin:0
+76px 0 0;position:relative}
+   .toggle-tabs li>span{
+     -moz-user-select:none;
+     -ms-user-select:none;
+     -webkit-user-select:none;
+     -o-user-select:none;
+     user-select:none;
+     display:inline-block;
+     line-height:50px;
+     cursor:pointer;
+     text-transform:uppercase;
+     font-size:14px;
+     position:relative;
+     text-transform:uppercase;
+     position:relative}
+     *:after{ padding: 0;}
+     .toggle-tabs li.current span{font-weight:700; border-bottom:5px solid;}
+     .toggle-tabs li:hover span{font-weight:700;border-bottom:5px solid #065683;color:#065683;}
+     .toggle-tabs li:hover{cursor:pointer}
+     .toggle-tabs li:first-child{border-left:none}
+     .toggle-tabs:after{content:'';display:table;clear:both}     
+}
+
+.course-info header.course-profile .intro-inner-wrapper {
+    background: rgba(215,214,209,0.9);
+    border: 1px solid #fff;
+    box-shadow: 0 4px 25px 0 rgba(0,0,0,0.5);
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    max-width: 100%;
+    min-width: 80%;
+    box-sizing: border-box;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    margin: 40px;
+}
+
+.course-info header.course-profile .intro-inner-wrapper .media .hero {
+    border: 1px solid #fff;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.course-info header.course-profile .intro-inner-wrapper .media .hero img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.course-info header.course-profile .intro-inner-wrapper .media {
+    background: transparent;
+    box-sizing: border-box;
+    display: inline;    
+    position: relative;    
+    z-index: 2;
+}
+    
+.course-info header.course-profile .intro-inner-wrapper hgroup {
+    border-bottom: 1px solid #fff;
+    box-shadow: 0 1px 0 0 rgba(255,255,255,0.6);
+    margin-bottom: 20px;
+    padding: 20px;
+    width: 100%;
+}
+
+.course-info header.course-profile .intro-inner-wrapper .table {
+    padding: 20px;
+}
+
+.course-info header.course-profile .intro-inner-wrapper hgroup h1 {
+    color: #2e2e2e;
+    font-weight: normal;
+    display: inline-block;
+    margin: 0;
+    letter-spacing: 0px;
+    text-align: left;
+    text-shadow: 0 1px rgba(255,255,255,0.6);
+}
+
+.course-info a.registerstyle{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 1px 1px 0 0 #4c4c4c;
+    display: block;
+    font: normal 1.2rem/1.6rem "Source Sans","Open Sans",Verdana,Geneva,sans-serif,sans-serif;
+    letter-spacing: 1px;
+    padding: 10px 0px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.modal {
+    /* position: fixed; */
+    /* top: 0; */
+    /* right: 0; */
+    bottom: auto;
+    left: 0;
+    z-index: 1050;
+    display: none;
+    overflow: hidden;
+    outline: 0;
+}

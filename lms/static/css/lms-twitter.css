@@ -17,35 +17,46 @@
 }
 
 #upvx-twitter {
-   max-width: 80%;
-   margin-right: auto;
-   margin-left: auto;
+    padding: 20px 20px 20px 20px;
+    background-color: #e7e7e7;
+}
+
+#upvx-twitter a {
+    color: #7f7f7f;
+}
+
+#upvx-twitter a:hover {
+    color: #000;
 }
 
 #upvxProfile .carousel-item .user{
-    color: #66b366;
-    font-size: 13px;
+    font-size: 10px;
     display: block;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
 }
 
+#upvxProfile .carousel-item img {
+    width:50px;
+    height: 50px;
+    border-radius: 25px;
+}
+
 #upvxProfile .carousel-item .tweet{
-    color:#919191;
-    height: 70px;
+    height: 110px;
+    font-size: 10px;
 }
 
 #upvxProfile .carousel-item .timePosted{
-    color:#3c3c3c;
     display: block;
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 600;    
 }
 
 #upvxProfile .carousel-item{
     box-shadow: 0 1px 4px 0 rgba(154,154,154,0.4);
-    background: #ededed;
+    background: #ffffff;
     border-radius: 10px;    
     margin-left: auto;
     margin-right: auto;    
@@ -54,4 +65,5 @@
 
 #upvxProfile .carousel-inner {
     padding: 0;
+    margin-bottom: 0;
 }

@@ -7,18 +7,28 @@ from django.core.urlresolvers import reverse
 
 from openedx.core.djangolib.markup import HTML, Text
 %>
+
 <link rel="stylesheet" href="${static.url("css/bootstrap/bootstrap.min.css")}">
 <script type="text/javascript" src="${static.url("js/bootstrap/bootstrap.bundle.min.js")}"></script>
 <script type="text/javascript" src="${static.url("js/bootstrap/bootstrap.min.js")}"></script>
+
 <main id="main" aria-label="Content" tabindex="-1">
     <section class="home">
       <header>
 	<%include file="${static.get_template_path('search_courses.html')}" />
- 	<%include file="${static.get_template_path('carousel.html')}" />
+        <%include file="${static.get_template_path('carousel.html')}" />
       </header>
-      <%include file="${courses_list}" />
-      <%include file="${static.get_template_path('moocs_definition.html')}" />
-      <%include file="${static.get_template_path('twitter_news.html')}" />
+      <%include file="${static.get_template_path('courses_list.html')}" />
+      <section id="bottom-panel"> 
+      <div class="row">
+        <div id="moocs-faq" class="col-md-9 mx-auto"> 
+          <%include file="${static.get_template_path('moocs_definition.html')}" />
+        </div>
+        <div id="upvx-twitter" class="col-md-3 mx-auto">
+          <%include file="${static.get_template_path('twitter_news.html')}" />
+        </div>
+      </div>
+      </section>
     </section>
 </main>
 

@@ -1,0 +1,16 @@
+@media only screen and (max-width: 500px) {
+.sequence-nav .sequence-list-wrapper{
+display:none;
+}
+
+.page-header{
+display:none;
+}
+
+}
+
+body.view-in-course .window-wrap {
+    min-width: auto;
+}
+
+

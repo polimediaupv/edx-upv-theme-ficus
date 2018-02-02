@@ -31,10 +31,11 @@ $(function() {
     {
      if(checkCookie(window.cookieName) != window.cookieValue)
      {
-        document.getElementById('cookiechangerlink').click();
+        //document.getElementById('cookiechangerlink').click();
      }
      else
      {
+	$($(".cookiesms")[0]).hide();
      }
     });
     var createCookie = function(name, value, days) {

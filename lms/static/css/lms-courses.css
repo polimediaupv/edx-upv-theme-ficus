@@ -3,3 +3,18 @@
     padding-bottom: 60px;
     padding-left: 20px;
 }
+
+#home-search {
+    width: 100%;
+    border: 1px solid #333;
+    border-radius: 5px;
+    box-shadow: none;
+    font-size: 1.25em;
+    font: italic 300 1rem/1.6rem Georgia, Cambria, "Times New Roman", Times, serif;
+    display: inline-flex;
+}
+
+#search-panel {
+    background-color: whitesmoke; 
+    min-height: 700px;
+}

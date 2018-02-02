@@ -1,0 +1,45 @@
+## mako
+
+<%page expression_filter="h" args="online_help_token"/>
+
+<%namespace name='static' file='../static_content.html'/>
+<%!
+from django.utils.translation import ugettext as _
+from lms.djangoapps.ccx.overrides import get_current_ccx
+
+# App that handles subdomain specific branding
+from branding import api as branding_api
+%>
+
+<div class="col-6 col-md-2">
+  <div class="logo">
+  <%block name="navigation_logo">
+  % if user.is_authenticated():
+    <a href="${marketing_link('ROOT')}">
+      <img src="${static.url('images/upvx-logo.png')}" alt="UPV[X] Plataforma MOOC de la UPV" height="30">
+    </a>
+  % else:
+    <a href="http://www.upv.es">
+      <img src="${static.url('images/logo.png')}" alt="Enlace a la página de la UPV">
+    </a>
+  % endif
+  </%block>
+  </div>
+</div>
+
+<div class="col-12 col-md-6 order-3 order-md-2">
+  % if course:
+    <div class="course-header">
+      <span class="provider">${course.display_org_with_default}:</span>
+      <span class="course-number">${course.display_number_with_default}</span>
+      <%
+      display_name = course.display_name_with_default
+      if settings.FEATURES.get('CUSTOM_COURSES_EDX', False):
+        ccx = get_current_ccx(course.id)
+        if ccx:
+          display_name = ccx.display_name
+      %>
+      <span class="course-name">${display_name}</span>
+    </div>
+  % endif
+</div>

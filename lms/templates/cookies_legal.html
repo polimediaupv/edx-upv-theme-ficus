@@ -1,9 +1,14 @@
 <%page expression_filter="h"/>
 <%namespace name='static' file='static_content.html'/>
 <%! from django.utils.translation import ugettext as _ %>
+<link rel="stylesheet" href="${static.url("css/lms-cookies_legal.css")}">
 
-
-<section id="change_cookies" class="modal">
+<div class="cookiesms" id="cookie1">
+        <i id="cookiesaccept" class="fa fa-times" aria-hidden="true"></i> 
+        <p id="cookiestext" class="texto">La Universitat Politècnica de València utiliza cookies propias y de terceros por motivos de seguridad, y también para mejorar la experiencia del usuario y conocer sus hábitos de navegación. Recuerda que, al utilizar nuestros servicios, admites nuestro aviso legal y <a class="cl" href="${marketing_link('TOS')}#cookies">nuestra política de cookies</a>. Entendemos que, si continuas navegando, es porque apruebas estos términos.
+        </p>
+</div>
+<!--<section id="change_cookies" class="modal">
   <div class="inner-wrapper" role="dialog" aria-labelledby="change_cookies_title">
 
 
@@ -34,4 +39,4 @@
       </form>
     </div>
   </div>
-</section>
+</section>--!>

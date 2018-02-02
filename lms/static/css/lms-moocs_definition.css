@@ -1,9 +1,6 @@
 #moocs-faq {
-	max-width: 80%;
-	margin-top: 30px;
-	margin-right: auto;
-	margin-left: auto;
-        margin-bottom: 30px;
+ padding: 30px 30px 30px 60px;
+ background-color: #f4f3f0;
 }
 
 .accordion .panel{
@@ -12,7 +9,6 @@
 }
 .accordion .panel-heading{
  padding:0;
- background: #fff;
 }
 
 .accordion .panel-title {
@@ -23,12 +19,12 @@
  display: block;
  position: relative;
  background:transparent;
- color:#de4d4e;
+ color:#333;
  font-size:14px;
  font-weight: bolder;
  margin-bottom:15px;
  padding:15px 20px;
- border-bottom:1px solid #de4d4e;
+ border-bottom:1px solid #333;
  transition:all 0.10s linear 0s;
 }
 
@@ -39,7 +35,7 @@
 }
 
 .accordion .panel-title a i{
- color:#de4d4e;
+ color:#333;
  position: absolute;
  top: 14px;
  left:25px;
@@ -53,7 +49,7 @@
  bottom:-15px;
  left:36px;
  border:7px solid transparent;
- border-top:7px solid #de4d4e;
+ border-top:7px solid #333;
 }
 
 .accordion .panel-title a.collapsed:before{
@@ -63,14 +59,13 @@
 
 .accordion .panel-title a.collapsed:hover{
  color: #6a6060;
- background-color: #f4f5f7
 }
 
 .accordion .panel-title a:after,
 .accordion .panel-title a.collapsed:after{
  content: "\f106";
  font-family: FontAwesome;
- color: #de4d4e;
+ color: #333;
  font-size: 20px;
  line-height: 20px;
  position: absolute;

@@ -9,7 +9,10 @@
 <%namespace name='static' file='static_content.html'/>
 
 <script type="text/javascript" src="${static.url("js/cookie_legal.js")}"></script>
+
+
 <%include file="${static.get_template_path('cookies_legal.html')}" />
+ 
 <div class="wrapper wrapper-footer">
   <footer id="footer-openedx" class="grid-container"
     ## When rendering the footer through the branding API,
@@ -19,7 +22,7 @@
       dir=${bidi}
     % endif
   >
-    <div class="colophon">
+    <div class="colophon col-12 col-md-8">
       <nav class="nav-colophon" aria-label="${_('About')}">
         <ol>
 	    <li class="nav-colophon-00">
@@ -66,7 +69,7 @@
     
     ## social links
 
-    <div class="references">
+    <div class="references col-12 col-md-4">
       <nav class="nav-social">
         <ul>
           <li class="nav-social-02">

@@ -1,0 +1,116 @@
+#DIVsep1 {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    background-color: #c00;
+    height: 10px;
+}
+
+#DIVsep1 > img.barrasup_rojonegro1 {
+    float: left;
+    width: 36%;
+    height: 10px;
+}
+
+#DIVsep1 > img.barrasup_rojonegro2 {
+    width: 13.4%;
+    height: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    float: right
+}
+
+@media only screen and (max-width: 470px) {
+  #DIVsep1 > img.barrasup_rojonegro2 {
+      visibility: hidden;
+  }
+}
+
+#login-btn {
+    color: #c00 !important;
+    font-size: .8rem;
+}
+
+.header-global ol.user{
+    list-style: none;
+    list-style-image: none;
+    margin: 0;
+    padding: 0;
+    float: right;
+    padding-left: 0;
+    margin: 0;
+}
+
+.header-global .user li.primary{
+    list-style: none;
+    list-style-image: none;
+    margin: 0;
+    padding: 0;
+    display: block;
+    float: left;
+    margin: 0;
+    position: relative;
+}
+
+.header-global .user a.user-link {
+    color: #0075b4;
+    font: inherit;
+    text-decoration: none;
+    transition: all 0.1s linear 0s;
+    margin: 0;
+    background-image: none;
+    padding: 0;
+    position: relative;
+    text-transform: none;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0;
+    background-image: linear-gradient(to , #fafafa 50%, #ededed 50%, gainsboro 100%);
+    background-color: transparent;
+    box-sizing: border-box;
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.6);
+    color: #3c3c3c;
+    display: inline-block;
+    font-family: &quot;Open Sans&quot;, Verdana, Geneva, sans-serif, sans-serif;
+    display: inline-block;
+    line-height: 1em;
+    text-shadow: 0 1px rgba(255, 255, 255, 0.6);
+    vertical-align: middle;
+}
+
+.header-global .user span.sr {
+    background: white;
+    color: black;
+    clip: rect(1px 1px 1px 1px);
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute;
+    margin: -1px;
+    height: 1px;
+    width: 1px;
+    border: 0;
+    padding: 0;
+    overflow: hidden;
+    word-wrap: normal;
+    font: inherit;
+}
+
+.header-global .user img.user-image-frame { 
+    border: 0;
+    margin: 0;
+    padding: 0;
+    max-width: 40px;
+    border-radius: 10%;
+}
+
+.header-global .user div.label-username{
+    float: right;
+    margin: 15px 5px 15px 15px;
+}
+
+.navbar.navbar-default.wrapper-collapsed button.navbar-toggle {
+    padding: 2px 8px 2px 8px;
+}
+
+div#navbar.navbar-collapse.collapse.show ul.nav.navbar-nav {
+    padding-left: 40px;
+}

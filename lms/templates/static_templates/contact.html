@@ -1,0 +1,54 @@
+<%page expression_filter="h"/>
+<%! from django.utils.translation import ugettext as _ %>
+<%inherit file="../main.html" />
+
+<%block name="pagetitle">${_("Contact")}</%block>
+
+<main id="main" aria-label="Content" tabindex="-1">
+<section class="container about">
+
+    <h1>${_("Contact")}</h1>
+
+    <div class="contacts">
+      <h2>Comentarios sobre las cursos</h2>
+      <p>Estamos siempre abiertos a sugerencias para mejorar nuestros cursos. Si te has inscrito como estudiante y tienes alguna pregunta, sugerencia o problema con algún curso en particular, por favor envía un mensaje al foro del curso</p> 
+
+      <h2>Consultas técnicas y Sugerencias</h2>
+      <p>
+       ${("Tanto si tienes sugerencias como si quieres ofrecer feedback sobre la plataforma de "
+          " {platform_name} puedes hacernos llegar un e-mail eligiendo uno de los asuntos  "
+          " del desplegable y pulsando sobre el boton enviar, que abrirá una ventana de tu "
+          " cliente de correo. Si nos vas a hacer llegar comentario técnico sobre algún error/es de la "
+          " plataforma, por favor, comprueba primero que estás usando Firefox o Chrome e incluye la versión "
+          " y el navegador que utilizas así como capturas de pantalla u otros detalles pertinentes sobre el "
+          " problema.").format(
+             platform_name=settings.PLATFORM_NAME
+       )}
+      </p>
+
+      <p>
+          Elige el asunto que más se ajuste a tu problema:
+      </p>
+
+      <form action="mailto:admin@upvx.es" method="get">
+          <div style="margin-top:10px;">
+          <select name="subject">
+              <option value="Lopd">Rectificación/eliminación de datos personales</option>
+                          <option value="Comentario">Sugerencia / Comentario</option>
+                          <option value="Duda">Duda</option>
+                          <option value="Baja">Eliminar cuenta</option>
+                          <option value="Otro">Otro</option>
+          </select>
+          <br>
+          </div>
+      <p>
+          <div class="form-actions">
+                <span>
+                    <input value=${_("Enviar")} type="submit" class="action action-primary" id="contact_submit_button">
+                </span>
+            </div>
+      </p>
+      </form>    
+    </div>
+</section>
+</main>
