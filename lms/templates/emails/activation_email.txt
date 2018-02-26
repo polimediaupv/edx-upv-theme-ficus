@@ -1,5 +1,5 @@
 <%! from django.utils.translation import ugettext as _ %>
-("Ya casi has acabado! Utiliza el enlace para activar tu cuenta y acceder a los cursos de {platform_name}. Ten en cuenta que no podrás iniciar sesión hasta que no la hayas activado.").format(platform_name=platform_name)
+("Ya casi has acabado! Utiliza el enlace para activar tu cuenta y acceder a los cursos de {platform_name}. Ten en cuenta que no podras iniciar sesion hasta que no la hayas activado.").format(platform_name=platform_name)
 
 % if is_secure:
 https://${ site }/activate/${ key }
@@ -13,4 +13,4 @@ ${_("The {platform_name} Team").format(platform_name=platform_name)}
 
 ("Si necesitas ayuda, por favor, ponte en contacto con nosotros en {support_url} o enviando un email a {support_email}.").format(support_url=support_url, support_email=support_email)
 
-("Este mensaje ha sido enviado automáticamente desde ${ site } porque alguien ha intentado crear una cuenta en {platform_name} utilizando tu dirección de correo").format(platform_name=platform_name)
+("Este mensaje ha sido enviado automaticamente desde ${ site } porque alguien ha intentado crear una cuenta en {platform_name} utilizando tu direccion de correo").format(platform_name=platform_name)

@@ -127,7 +127,7 @@ from openedx.core.lib.courses import course_image_url
 		    </hgroup>
                     <div class="main-cta">
                         % if course.display_org_with_default.lower() == "edxorg":
-		          <a href="https://www.edx.org/course/${course.display_number_with_default}-upvalenciax-${course.location.run}" class="registerstyle" onclick="SetCookie('${course.id.to_deprecated_string().replace("/","_")}','True',30);">
+		          <a href="https://www.edx.org/course/${course.display_number_with_default}-upvalenciax-${course.location.run}" class="btn btn-primary registerstyle" onclick="SetCookie('${course.id.to_deprecated_string().replace("/","_")}','True',30);">
 		              Este curso se realizará en edx.org
 	          	</a>
                         % else:

@@ -18,7 +18,7 @@
 
 #upvx-twitter {
     padding: 20px 20px 20px 20px;
-    background-color: #e7e7e7;
+    background-color: #a8b0b2;
 }
 
 #upvx-twitter a {
@@ -55,7 +55,6 @@
 }
 
 #upvxProfile .carousel-item{
-    box-shadow: 0 1px 4px 0 rgba(154,154,154,0.4);
     background: #ffffff;
     border-radius: 10px;    
     margin-left: auto;

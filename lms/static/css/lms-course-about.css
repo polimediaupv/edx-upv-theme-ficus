@@ -16,6 +16,7 @@
     background-color: white;
     margin-top: 20px;
     margin-left: 2.5%;
+    margin-bottom: 5%;
 }
 
 .toggle-tabs {
@@ -35,26 +36,22 @@
     }   
     @media only screen and (max-width: 767px)
     {
-        .toggle-tabs{display:none;} 
-        .details section{display:block!important;
+        .toggle-tabs {
+            display:none;
+        } 
+        .details section {
+            display:block!important;
             border-bottom:5px solid #065683;
         }
-        .details section:after{content:"\f0d8";
-        content: "\f0d8";
-        font-family: "FontAwesome";
-        color: #065683;
-        font-size: 26px;
-        bottom: -12px;
-        position: relative;
-        left: 50%;
-        margin-left: -8px;       
+        .details section.faq.hidden-section {
+            border: none;
         }
     }    
 
 
 
 @media only screen and (min-width: 768px){
-    .tab-nav{
+    .tab-nav {
         font-size: 14px;
         line-height: 22px;
         background: white;
@@ -67,32 +64,56 @@
         overflow: hidden;
         position: relative;
         width: 100%;
-
     }
-   .toggle-tabs{display:block;width:100%;position:relative}
-   ul.toggle-tabs{list-style-type:none;}
-   .toggle-tabs li{float:left;margin:0
-76px 0 0;position:relative}
-   .toggle-tabs li>span{
-     -moz-user-select:none;
-     -ms-user-select:none;
-     -webkit-user-select:none;
-     -o-user-select:none;
-     user-select:none;
-     display:inline-block;
-     line-height:50px;
-     cursor:pointer;
-     text-transform:uppercase;
-     font-size:14px;
-     position:relative;
-     text-transform:uppercase;
-     position:relative}
-     *:after{ padding: 0;}
-     .toggle-tabs li.current span{font-weight:700; border-bottom:5px solid;}
-     .toggle-tabs li:hover span{font-weight:700;border-bottom:5px solid #065683;color:#065683;}
-     .toggle-tabs li:hover{cursor:pointer}
-     .toggle-tabs li:first-child{border-left:none}
-     .toggle-tabs:after{content:'';display:table;clear:both}     
+    .toggle-tabs { 
+        display:block;width:100%;position:relative
+    }
+    ul.toggle-tabs {
+        list-style-type:none;
+    }
+    .toggle-tabs li {
+        float:left;
+        margin: 0 40px 0 0;
+        position:relative
+    }
+    .toggle-tabs li>span {
+        -moz-user-select:none;
+        -ms-user-select:none;
+        -webkit-user-select:none;
+        -o-user-select:none;
+        user-select:none;
+        display:inline-block;
+        line-height:50px;
+        cursor:pointer;
+        text-transform:uppercase;
+        font-size:14px;
+        position:relative;
+        text-transform:uppercase;
+        position:relative
+    }
+    *:after { 
+        padding: 0;
+    }
+    .toggle-tabs li.current span {
+        font-weight:700; 
+        border-bottom:5px solid;
+    }
+    .toggle-tabs li:hover span {
+        font-weight:700;
+        border-bottom:5px solid #065683;
+        color:#065683;
+    }
+    .toggle-tabs li:hover {
+        cursor:pointer
+    }
+    .toggle-tabs li:first-child {
+        border-left:none
+    }
+    .toggle-tabs:after {
+        content:'';
+        display:table;
+        clear:both
+    }     
 }
 
 .course-info header.course-profile .intro-inner-wrapper {

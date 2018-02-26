@@ -6,8 +6,8 @@
 
 #home-search {
     width: 100%;
-    border: 1px solid #333;
-    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25em;
     box-shadow: none;
     font-size: 1.25em;
     font: italic 300 1rem/1.6rem Georgia, Cambria, "Times New Roman", Times, serif;
@@ -18,3 +18,31 @@
     background-color: whitesmoke; 
     min-height: 700px;
 }
+
+.badge {
+    background-color: #777;
+    color: #fff;
+    float: right;
+}
+
+.list-group-item > h6 {
+   font-size: 14px !important;
+}
+
+article.course{
+   display: inline-grid;
+   margin-left: 10px;
+}
+
+section.courses{
+   width:100%!important;
+}
+
+.fa-spin {
+   font-size:44px
+}
+
+.panel.panel-default {
+   margin-top: 20px;
+}
+

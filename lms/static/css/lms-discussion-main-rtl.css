@@ -8334,33 +8334,47 @@ body {
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 /* line 136, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+body.view-in-course .course-wrapper,
+body.view-in-course .profile-wrapper,
+body.view-in-course .instructor-dashboard-wrapper-2,
+body.view-in-course .wiki-wrapper,
+body.view-in-course .teams-wrapper,
+body.view-in-course .static_tab_wrapper {
+  max-width: none;
+  margin: 0; }
+
+/* line 146, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .wrapper-course-material .course-material {
   padding: 0 !important;
-  margin: 0 auto;
+  margin: 0 0 0 15px;
   max-width: none; }
 
-/* line 142, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 152, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .wrapper-course-material .course-material .course-tabs {
   padding: 0; }
 
-/* line 146, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 156, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .wrapper-course-material .course-tabs li a:visited.active {
-  border-bottom-color: #065683; }
+  border-bottom-color: #333; }
 
-/* line 150, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 160, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .course-tabs .tab a, .course-tabs .tab a:visited {
   line-height: 20px;
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   font-weight: 400; }
 
-/* line 157, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 167, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .content-wrapper {
   min-height: 700px;
-  max-width: none;
+  max-width: none !important;
   margin: 0 auto; }
 
-/* line 163, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 173, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+.content-wrapper .main-container {
+  padding-bottom: 40px; }
+
+/* line 177, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .content-wrapper .container {
   max-width: none;
   width: auto;
@@ -8368,12 +8382,12 @@ body {
   margin-left: 15px;
   margin-right: 15px; }
 
-/* line 171, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 185, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 body.view-in-course .window-wrap {
   min-width: auto;
   background-color: whitesmoke; }
 
-/* line 178, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 192, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .courses-container {
   max-width: 85%;
   margin-top: 30px;
@@ -8383,14 +8397,14 @@ body.view-in-course .window-wrap {
   font-weight: 400;
   font-style: normal; }
 
-/* line 188, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 202, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .courses-container .courses {
   max-width: 1100px;
   width: 100% !important;
   float: none;
   margin: 0 auto; }
 
-/* line 195, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 209, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .courses-container .courses .course {
   border-bottom: 0px;
   box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.125);
@@ -8398,16 +8412,16 @@ body.view-in-course .window-wrap {
   padding: 0 0 0 0;
   width: 276px; }
 
-/* line 203, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 217, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .courses-container .courses .course .course-info {
   margin-top: -48px;
   transition: all 0.2s ease; }
 
-/* line 208, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 222, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .courses-container .courses .course .course-info:hover {
   margin-top: -200px; }
 
-/* line 212, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 226, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .courses-container .meta-info {
   background: rgba(0, 0, 0, 0.75);
   bottom: 6px;
@@ -8423,59 +8437,59 @@ body.view-in-course .window-wrap {
   -o-transition: all 0.2s ease;
   transition: all 0.2s ease; }
 
-/* line 228, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 242, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .courses-container .meta-info:hover {
   opacity: 0.1; }
 
-/* line 232, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 246, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .courses-container .courses .course .meta-info p {
   color: #fff;
   font-style: italic;
   line-height: 1.2em;
   padding: 4px 12px 5px; }
 
-/* line 239, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 253, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 #courses-container img {
   width: 276px;
   height: 200px; }
 
-/* line 244, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 258, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .courses-container .courses .course .course-info .course-organization {
   height: 23px; }
 
-/* line 248, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 262, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .courses-container .courses .course .course-info .course-code {
   line-height: 17px;
   height: 34px; }
 
-/* line 253, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 267, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .courses-container .courses .course .course-info .course-title {
   margin: 5px 0 10px 0;
   height: 50px;
   color: #333; }
 
-/* line 259, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 273, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .courses-container .courses .course {
   border-radius: 5px; }
 
-/* line 263, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 277, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .courses-container div.inner-wrapper {
   border-radius: 5px; }
 
-/* line 268, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 282, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .courses-container header.course-header {
   z-index: 3;
   opacity: 0.9;
   background-color: #d5d5d5;
   color: #333; }
 
-/* line 275, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 289, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .courses-container header.course-header .row {
   margin-left: 0;
   margin-right: 0;
   min-height: 48px; }
 
-/* line 281, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 295, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .courses-container header.course-header .title-link {
   margin-top: 4px;
   font-family: "Source Sans", "Open Sans", Verdana, Geneva, sans-serif, sans-serif;
@@ -8486,42 +8500,42 @@ body.view-in-course .window-wrap {
   text-transform: none;
   vertical-align: middle; }
 
-/* line 292, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 306, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .courses-container header.course-header .info-link {
   margin-top: 8px; }
 
-/* line 296, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 310, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .course .course-info .course-info header.course-profile {
   padding-top: 0px; }
 
-/* line 300, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 314, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .course .course-info header.course-profile {
   height: 100%; }
 
-/* line 304, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 318, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .course .course-info .course-profile div.col-md-11 {
   margin-bottom: 20px; }
 
-/* line 308, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 322, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .course .course-info .course-sidebar .important-dates .course-enroll-item {
   display: flex;
   align-items: center;
   justify-content: center; }
 
-/* line 314, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 328, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .course .course-info .course-sidebar .important-dates a.course-enroll-item {
   background-color: #333;
   border: none; }
 
-/* line 319, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 333, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .course .course-info .course-sidebar .important-dates a.course-enroll-item:hover {
   color: #fff !important; }
 
-/* line 323, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 337, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .course .course-info .container {
   min-height: 450px; }
 
-/* line 329, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 343, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 #courses-container div.section-title {
   position: relative;
   margin: 0 -25px;
@@ -8534,7 +8548,7 @@ body.view-in-course .window-wrap {
   margin-bottom: 15px;
   padding-left: 10px; }
 
-/* line 342, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 356, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 #courses-container div.section-title:after, #courses-container div.section-title:before {
   content: "";
   display: block;
@@ -8545,81 +8559,93 @@ body.view-in-course .window-wrap {
   border-style: solid;
   border-color: #222 transparent; }
 
-/* line 353, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 367, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 #courses-container div.section-title:before {
   border-width: 25px 0 0 25px;
   left: 0; }
 
-/* line 357, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 371, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 #courses-container div.section-title:after {
   border-width: 25px 25px 0 0;
   right: 0; }
 
-/* line 363, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 377, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .login-register-content h2 {
   color: #c00; }
 
-/* line 370, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 384, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 #bottom-panel .row {
   margin-left: 0;
   margin-right: 0; }
 
-/* line 375, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 389, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .wrapper-footer {
   background: #333 !important;
   color: #d2d2d2 !important;
   margin: 0 !important;
   padding: 25px 10px 30px 10px !important; }
 
-/* line 382, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 396, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .wrapper-footer footer#footer-openedx .colophon .nav-colophon a:hover {
   color: #fff !important;
   border-bottom: 1px dotted #fff !important; }
 
-/* line 387, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 401, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .wrapper-footer footer#footer-openedx .references {
-  margin: 0; }
+  margin: 0 !important; }
 
-/* line 391, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 405, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .wrapper-footer footer#footer-openedx .nav-legal a:hover {
   color: #fff !important;
   border-bottom: 1px dotted #fff !important; }
 
-/* line 396, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 410, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .wrapper-footer a#poweredbyopenedx:hover {
   border-bottom: none !important; }
 
-/* line 400, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 414, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .wrapper-footer footer#footer-openedx {
   max-width: none;
   margin-left: auto;
   margin-right: auto; }
 
-/* line 406, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 420, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .wrapper-footer footer#footer-openedx .colophon {
-  margin: 0; }
+  margin: 0 !important; }
 
-/* line 410, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 424, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .wrapper-footer footer#footer-openedx .colophon .nav-colophon {
-  margin: 5px 0 30px 0; }
+  margin: 5px 0 30px 0 !important; }
 
-/* line 414, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 428, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+.wrapper-footer footer#footer-openedx .colophon .nav-colophon ol {
+  margin: 0 !important; }
+
+/* line 432, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .wrapper-footer footer#footer-openedx .nav-social li {
-  margin: 0; }
+  margin: 0 !important; }
 
-/* line 418, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 436, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .wrapper-footer footer#footer-openedx .copyright {
-  color: #767676; }
+  color: #767676 !important; }
 
-/* line 425, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 443, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .wiki-wrapper section.wiki .breadcrumbs-header {
   padding: 10px 0 40px; }
 
-/* line 429, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 447, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .wiki-wrapper section.wiki .breadcrumb {
   padding: 0;
   background-color: transparent; }
 
-/* line 434, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 452, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .wiki-wrapper section.wiki .breadcrumb li.active {
   font-weight: 800; }
+
+/* line 459, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+div#email-settings-modal.modal, div#email-settings-modal.leanModal_box, div#email-settings-modal.wmd-prompt-dialog, div#unenroll-modal.modal.unenroll-modal, div#unenroll-modal.unenroll-modal.leanModal_box, div#unenroll-modal.unenroll-modal.wmd-prompt-dialog {
+  bottom: initial; }
+
+/* line 466, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+.wrapper-account-settings .wrapper-header .account-nav {
+  margin: 0; }

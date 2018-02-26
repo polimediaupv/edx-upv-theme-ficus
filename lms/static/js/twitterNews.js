@@ -10,6 +10,7 @@ var handleTweets = function(tweets){
         element.innerHTML = html;
 };
 
+$(window).load(function() {
 configProfile = {
     "profile": {"screenName": 'upvx'},
     "domId": '',
@@ -24,3 +25,4 @@ configProfile = {
     "lang": 'es'
   };
 twitterFetcher.fetch(configProfile);
+});

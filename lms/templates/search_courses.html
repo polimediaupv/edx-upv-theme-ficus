@@ -3,19 +3,15 @@
 <%! from django.utils.translation import ugettext as _ %>
 <link rel="stylesheet" href="${static.url("css/lms-search-courses.css")}">
 
-
 <section id="course-search">
-	<header>
-	</header>
-
-	<div class="course-search">
-		<form method="get" action="/courses">
-		  <label><span class="sr">${_("Search for a course")}</span>
-		    <input id="search-text" class="search-input" name="search_query" type="text" placeholder="${_("Search for a course")}"></input>
-		  </label>
-		  <button id="search-button" class="search-submit" type="submit">
-		    <span id="search-icon" class="search-icon fa fa-search" aria-hidden="true"></span><span class="sr">${_("Search")}</span>
-		  </button>
-		</form>
-	</div>
+  <div class="course-search">
+    <form method="get" action="/courses">
+      <label><span class="sr">${_("Search for a course")}</span>
+        <input id="search-text" class="search-input" name="search_query" type="text" placeholder="${_("Search for a course")}"></input>
+      </label>
+      <button id="search-button" class="search-submit" type="submit">
+        <span id="search-icon" class="search-icon fa fa-search" aria-hidden="true"></span><span class="sr">${_("Search")}</span>
+      </button>
+    </form>
+  </div>
 </section>

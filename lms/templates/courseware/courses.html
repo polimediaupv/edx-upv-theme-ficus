@@ -16,7 +16,6 @@
 <link rel="stylesheet" href="${static.url("css/bootstrap/bootstrap.min.css")}">
 <script type="text/javascript" src="${static.url("js/bootstrap/bootstrap.bundle.min.js")}"></script>
 <script type="text/javascript" src="${static.url("js/bootstrap/bootstrap.min.js")}"></script>
-<script type="text/javascript" src="${static.url("js/courseSearch.js")}"></script>
 <link rel="stylesheet" href="${static.url("css/lms-courses.css")}">
 
 <%block name="pagetitle">${_("Courses")}</%block>
@@ -25,70 +24,92 @@
 
     <%          
                 courses_highlighted=[]
-                orgs=[]
+                orgs={}
+                avail_A=0
+                avail_S=0
+                avail_C=0
+                total_cursos=0
                 for course in courses:
-                    if course.display_org_with_default not in orgs and course.display_org_with_default.lower() != 'poc':
-                        orgs.append(course.display_org_with_default)                    
+                    if course.display_org_with_default.lower() != 'poc':
+                      if course.display_org_with_default in orgs:
+                        orgs[course.display_org_with_default] = orgs[course.display_org_with_default] + 1 
+                      else:
+                        orgs[course.display_org_with_default] = 1
+
+                      if course.start > timezone.now():
+                        avail_S += 1
+                      else:
+                        if course.end != None:
+                          if course.end < timezone.now():
+                            avail_A += 1
+                          else:
+                            avail_C += 1
+                          endif
+                        else:
+                          avail_C += 1 
+                        endif
+                      endif
+                      total_cursos += 1
+
                 courses_highlighted = sorted(courses, key=lambda course: course.start)
 
     %>
     
    
 <div class="row">
-   <div id="search-panel" class="col-md-2 mx-auto">
+   <div id="search-panel" class="col-md-3 mx-auto">
       <div class="search-controls">
-          <h8 for="home-search" class="search-bar-label">Buscar Cursos</h8> 
+          <h6 for="home-search" class="search-bar-label">Buscar Cursos</h6> 
           <input type="text" id="home-search" value="" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-haspopup="false" class="" placeholder="" spellcheck="false">
-          <div>
-            <ul style="
-                 list-style: none;
-                 margin: 0;
-                 padding: 0;
-                 text-indent: 0;
-                ">
+          
+          <div class="panel-group" id="filters">
 
-                %for org in orgs:
-                <li class style="
-                      overflow: hidden;    
-                      text-overflow: ellipsis;    
-                      white-space: nowrap;
-                     ">
-                    <input class="orgsfilter" type="checkbox" name="${org}" value="${org}" checked>${ org }
-                </li>
-                %endfor
-            </ul>
-            <script>
-                $('.orgsfilter').change(function() {
-                    var orgfilter = $(this)[0].value;
-                    if ($(this).is(':checked'))
-                    {
-                        $(".course-organization").filter(function() {
-                            // Matches exact string
-                            return $(this).text() === orgfilter;
-                        }).parent().parent().parent().parent().parent().parent().show()
-                    }
-                    else
-                    {
-                        $(".course-organization").filter(function() {
-                            // Matches exact string
-                            return $(this).text() === orgfilter;
-                        }).parent().parent().parent().parent().parent().parent().hide()
-                    }
-                });
-            </script>
+             <div class="panel panel-default">
+              <div class="panel-heading">
+                <h6 class="panel-title">
+                  <a data-toggle="collapse" href="#availability-filter"><span class="fa fa-edit"></span> Disponibilidad</a>
+                </h6>
+              </div>
+              <div id="availability-filter" class="panel-collapse collapse show">
+                <ul class="list-group">
+                  <div class="list-group-item">
+                    <h6><input class="availfilter_all" type="checkbox" checked/> Todos <span class="badge">${total_cursos}</span></h6>
+                  </div>
+                  <div class="list-group-item">
+                    <h6><input class="availfilter" type="checkbox" value="C" /> Cursos en marcha <span class="badge">${avail_C}</span></h6>
+                  </div>
+                  <div class="list-group-item">
+                    <h6><input class="availfilter" type="checkbox" value="S" /> Todavía no iniciados <span class="badge">${avail_S}</span></h6>
+                  </div>
+                  <div class="list-group-item">
+                    <h6><input class="availfilter" type="checkbox" value="A" /> Archivados <span class="badge">${avail_A}</span></h6>
+                  </div>
+                </ul>
+              </div>
+            </div>
+  
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h6 class="panel-title">
+                  <a data-toggle="collapse" href="#org-filter"><span class="fa fa-edit"></span> Materias</a>
+                </h6>
+              </div>
+              <div id="org-filter" class="panel-collapse collapse show">
+                <ul class="list-group">
+                  <div class="list-group-item">
+                    <h6><input class="orgfilter_all" type="checkbox" checked/> Todas <span class="badge">${total_cursos}</span></h6>
+                  </div> 
+                  %for org,num in orgs.items():
+                  <div class="list-group-item">
+                    <h6><input class="orgfilter" type="checkbox" value="${org}"/> ${org} <span class="badge">${num}</span></h6>
+                  </div> 
+                  %endfor
+              </div>
+            </div>
           </div>
        </div>
     </div>
-    <div class="col-md-10 mx-auto">
-      <style>
-        article.course{
-            display: inline-grid;
-            margin-left: 10px;
-        }
-        section.courses{
-			width:100%!important;
-		}
-      </style>
+    <div class="col-md-9 mx-auto">
       <section>
         <section id="courses-container" class="courses-container">
             <div class="section-title">
@@ -97,81 +118,188 @@
                 </h5>
     	    </div>
             <section class="courses-highlighted">
-	        <section class="spinner">
-	            <i class="fa fa-spinner fa-spin" style="font-size:44px"></i>
-	            Buscando Cursos...
-	        </section>
 	        <section class="notfound" style="display:none" >
 	            No se han encontrado cursos con su criterio de búsqueda.
 	        </section>
-                <section class="courses">
+                <section class="courses" style="display:block">
                     %for course in courses_highlighted:
                         % if course.display_org_with_default.lower() != "poc" :                                
-	                    <span class="courses-listing-item" style="display:none">
+	                    <span class="courses-listing-item" style="display:inline-block">
                                 <%include file="../course.html" args="course=course" />
                                 <%include file="./about_hide.html" args="course=course"/>                                
                             </span>
                         % endif
                     %endfor	
                 </section>
-            </section>        
+            </section>
         </section>
       </section>
     </div>
 
     <script>
-        $(document).ready(function() {
-           searchParams = new URLSearchParams(window.location.search)
-           query = searchParams.get("search_query");
-           $("#home-search")[0].value=query;
-           search(query);
+        
+        // lazy load course images
+        function load_images() {
+           $('.course-image').each(function() {
+              var imgs = $(this).find('img');
+              imgs.each(function() {
+                var datasrc = $(this).attr('data-src');
+                if ( datasrc && $(this).offset().top < ($(window).scrollTop() + $(window).height()) ) {
+                  $(this).attr('src', datasrc);
+                  $(this).removeAttr('data-src');
+                };
+              });
+            });
+          }
+
+        $(window).scroll(function() {
+          load_images();
         });
 
-        $( "#home-search" ).keyup(function() {
-                search($("#home-search")[0].value);
+        $(window).resize(function() {
+          load_images();
         });
 
-        function search(search_query){
-	var foundAny=false;
-	$($(".courses")[0]).css("display","none");
-	$($(".notfound")[0]).css("display","none");
-	$($(".spinner")[0]).css("display","inline-block");
-        $(".courses-listing-item").each(index=>{
-        var shortAuxdiv = document.createElement("div");
-        shortAuxdiv.innerHTML= $($(".courses-listing-item")[index]).find('meta')[0].content
-        var shortDesc = shortAuxdiv.textContent || shortAuxdiv.innerText || "";
-        var descAuxdiv = document.createElement("div");
-        descAuxdiv.innerHTML= $($(".courses-listing-item")[index]).find('meta')[1].content
-        var desc = descAuxdiv.textContent || descAuxdiv.innerText || "";
-        var title = $($($(".courses-listing-item")[index]).find("article")[0]).attr("aria-label")
-        if (title.toLowerCase().includes(search_query.toLowerCase())||desc.toLowerCase().includes(search_query.toLowerCase())||shortDesc.toLowerCase().includes(search_query.toLowerCase())){
-                $($(".courses-listing-item")[index]).css("display","inline-block");
-	        $($(".courses")[0]).css("display","block");
-	        $($(".spinner")[0]).css("display","none")
+        // filter definition 
+        var avail_filter = [];
+        var avail_filter_all = true;
+        var org_filter = [];
+        var org_filter_all = true;
+
+        // apply filters to courses list
+        function apply_course_filters() {
+
+          var foundAny=false;
+          $($(".courses")[0]).css("display","block");
+
+          $(".courses-listing-item").each(function() {
+            var avail = $(this).find('span.course-availability').text();
+            var org = $(this).find('span.course-organization').text();
+            if (avail_filter.indexOf(avail) >= 0 || avail_filter_all) {
+              if (org_filter.indexOf(org) >= 0 || org_filter_all) {
+                $(this).show();
+                foundAny=true;
+                var imgs = $(this).find('img');
+                imgs.each(function() {
+                  var datasrc = $(this).attr('data-src');
+                  if ( datasrc && $(this).offset().top < ($(window).scrollTop() + $(window).height()) ) {
+                    $(this).attr('src', datasrc);
+                    $(this).removeAttr('data-src');
+                  };
+                });
+              } else {
+                $(this).hide();
+              }
+            } else {
+              $(this).hide();
+            }
+          });
+          if (foundAny) {
+            $($(".notfound")[0]).css("display","none");
+          } else {
+            $($(".notfound")[0]).css("display","block");
+          }
+        }
+
+        // filter change triggers
+        $('.availfilter_all').change(function() {
+           avail_filter = [];
+           avail_filter_all = $(this).is(':checked');
+           $('.availfilter').each(function() {
+             $(this).attr('checked',false);
+           });
+           apply_course_filters();
+        });
+
+        $('.orgfilter_all').change(function() {
+           org_filter = [];
+           org_filter_all = $(this).is(':checked');
+           $('.orgfilter').each(function() {
+             $(this).attr('checked',false);
+           });
+           apply_course_filters();
+        });
+
+        $('.availfilter').change(function() {
+            if (avail_filter_all) {
+              avail_filter_all = false;
+              $('.availfilter_all').attr('checked',false);
+            }
+            var avail = $(this)[0].value;
+            if ($(this).is(':checked')) {
+              avail_filter.push(avail);
+            } else {
+               avail_filter = avail_filter.filter(function(item) {
+                  return item !== avail;
+               });
+            }
+            apply_course_filters();
+        });
+
+        $('.orgfilter').change(function() {
+            if (org_filter_all) {
+              org_filter_all = false;
+              $('.orgfilter_all').attr('checked',false);
+            }
+            var org = $(this)[0].value;
+            if ($(this).is(':checked')) {
+              org_filter.push(org);
+            } else {
+              org_filter = org_filter.filter(function(item) {
+                  return item !== org;
+              });
+            }
+            apply_course_filters();
+        });
+
+        // search courses
+        function search(search_query) {
+
+          var foundAny=false;
+          search_query = search_query.toLowerCase();
+
+          $('.courses-listing-item:visible').each(function() {
+            var shortAuxdiv = document.createElement("div");
+            shortAuxdiv.innerHTML= $($(this).find('meta')[0]).content
+            var shortDesc = shortAuxdiv.textContent || shortAuxdiv.innerText || "";
+            var descAuxdiv = document.createElement("div");
+            descAuxdiv.innerHTML= $($(this).find('meta')[1]).content
+            var desc = descAuxdiv.textContent || descAuxdiv.innerText || "";
+            var title = $($(this).find("article")[0]).attr("aria-label")
+            if ( title.toLowerCase().includes(search_query) || desc.toLowerCase().includes(search_query) || shortDesc.toLowerCase().includes(search_query) ) {
+                $(this).show();
 		foundAny=true;
-        }else{
-                $($(".courses-listing-item")[index]).css("display","none");
-        }
-        });
+            } else {
+                $(this).hide();
+            } 
+          });
 
-        $('.orgsfilter').each(function(index){
-        if ($('.orgsfilter')[index].checked==false){
-                $(".course-organization").filter(function() {
-        // Matches exact string
-        return $(this).text() === $('.orgsfilter')[index].value;
-                }).parent().parent().parent().parent().parent().parent().hide()
-                }
-        });
-	
-	if (!foundAny)
-	{
-		$($(".courses")[0]).css("display","none");
-                $($(".spinner")[0]).css("display","none")
-		$($(".notfound")[0]).css("display","block");
-	}
+	  if (foundAny) {
+            $($(".notfound")[0]).css("display","none"); 
+          } else {
+	    $($(".notfound")[0]).css("display","block");
+	  }
         }
 
-        search();
+        // serach text change trigger
+        $( "#home-search" ).keyup(function() {
+           apply_course_filters();
+           var query = $("#home-search")[0].value;
+           if (query) {
+             search(query);
+           }
+        });
+ 
+        // window initialitation       
+        $(document).ready(function() {
+           apply_course_filters();
+           var query = (location.search.split('search_query=')[1]||'').split('&')[0];
+           if (query) {
+             $("#home-search")[0].value=query;
+             search(query);
+           }
+        });
+
     </script>
 </div>
 </main>

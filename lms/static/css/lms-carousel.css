@@ -20,54 +20,33 @@ div#carousel-upv.carousel.slide {
 	min-width: 950px;
 }
 
-#carousel-courses-highlighted .row {
-        margin-left: 0;
-        margin-right: 0;
-        min-height: 48px;
-}
-
+#carousel-courses-highlighted .row, 
 #carousel-courses-edxorg .row {
         margin-left: 0;
         margin-right: 0;
         min-height: 48px;
 }
 
-#carousel-courses-highlighted a a:visited {
+#carousel-courses-highlighted a a:visited,
+#carousel-courses-edxorg a a:visited {
         text-decoration: none !important;
 }
 
-#carousel-courses-edxorg a a:visited {
-	text-decoration: none !important;
-}
-
-#carousel-courses-highlighted a.carousel-control-prev {
+#carousel-courses-highlighted a.carousel-control-prev, 
+#carousel-courses-edxorg a.carousel-control-prev {
         color: rgb(100, 100, 100);
-        font-size: 20px;
+        font-size: 30px;
         line-height: 1;
         left: -3%;
 	width: 5%;
 }
 
-#carousel-courses-highlighted a.carousel-control-next {
-        color: rgb(100, 100, 100);
-        font-size: 20px;
-        line-height: 1;
-	right: -3%;
-	width: 5%;
-}
-
-#carousel-courses-edxorg a.carousel-control-prev {
-        color: rgb(100, 100, 100);
-        font-size: 20px;
-        line-height: 1;
-	left: -3%;
-	width: 5%;
-}
-
+#carousel-courses-highlighted a.carousel-control-next,
 #carousel-courses-edxorg a.carousel-control-next {
         color: rgb(100, 100, 100);
-        font-size: 20px;
+        font-size: 30px;
         line-height: 1;
 	right: -3%;
 	width: 5%;
 }
+
