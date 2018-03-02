@@ -3,6 +3,12 @@
  background-color: #f4f3f0;
 }
 
+@media only screen and (max-width: 400px) {
+ #moocs-faq {
+   padding: 0;
+  }
+}
+
 .accordion .panel{
  border:0px none;
  box-shadow:none;

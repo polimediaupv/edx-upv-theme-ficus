@@ -1,80 +1,79 @@
+#course-search {
+    background: #fff;
+}
+
 .course-search {
-	position: absolute;
-	top: 310px;
-	left: 70px;
-	z-index: 10;
-        font-size: 16px;
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: 400;
- 	font-style: normal;
+    position: absolute;
+    top: 310px;
+    left: 70px;
+    z-index: 10;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 #search-text {
-	width: 250px;
-	box-shadow: none;
+    width: 250px;
+    box-shadow: none;
 }
 
 #search-button {
-	margin-left: -40px;
- 	background: #333;
-	color: #ffffff;
-	position: absolute;
-	top: 0px;
- 	border: none;
-	border-radius: 3px;
-        text-shadow: none;
-        box-shadow: none;
-	padding: .350rem .75rem;
+    margin-left: -40px;
+    background: #333;
+    color: #ffffff;
+    position: relative;
+    top: 0px;
+    border: none;
+    border-radius: 3px;
+    text-shadow: none;
+    box-shadow: none;
+    padding: .350rem .75rem;
 }
 
 #search-icon:hover {
-	color: #7d7d7d;
+    color: #7d7d7d;
 }
 
 #search-icon: {
-        -webkit-transition: color 0.2s ease;
-        -moz-transition: color 0.2s ease;
-        -o-transition: color 0.2s ease;
-        transition: color 0.2s ease;
+    -webkit-transition: color 0.2s ease;
+    -moz-transition: color 0.2s ease;
+    -o-transition: color 0.2s ease;
+    transition: color 0.2s ease;
 }
 
 @media only screen and (max-width: 500px) {
-.course-search {
-	position: absolute;
-	top: 310px;
+    .course-search {
+	position: relative;
+	top: 5px;
 	left: 10px;
-	z-index: 10;
-        font-size: 16px;
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: 400;
- 	font-style: normal;
-}
+    }
 
-#search-text {
+    #search-text {
         width: 250px;
         box-shadow: none;
-}
+    }
 
-#search-button {
+    #search-button {
 	margin-left: -40px;
  	background: #333;
 	color: #ffffff;
-	position: absolute;
+	position: relative;
 	top: 0px;
  	border: none;
 	border-radius: 3px;
         text-shadow: none;
         box-shadow: none;
-}
+    }
 
-#search-icon:hover {
+    #search-icon:hover {
 	color: #7d7d7d;
-}
+    }
 
-#search-icon: {
+    #search-icon: {
         -webkit-transition: color 0.2s ease;
         -moz-transition: color 0.2s ease;
         -o-transition: color 0.2s ease;
         transition: color 0.2s ease;
-}
+    }
 }

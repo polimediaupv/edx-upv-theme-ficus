@@ -15,8 +15,8 @@ from openedx.core.djangolib.markup import HTML, Text
 <main id="main" aria-label="Content" tabindex="-1">
     <section class="home">
       <header>
-	<%include file="${static.get_template_path('search_courses.html')}" />
         <%include file="${static.get_template_path('carousel.html')}" />
+        <%include file="${static.get_template_path('search_courses.html')}" />
       </header>
       <%include file="${static.get_template_path('courses_list.html')}" />
       <section id="bottom-panel"> 

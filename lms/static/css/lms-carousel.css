@@ -50,3 +50,9 @@ div#carousel-upv.carousel.slide {
 	width: 5%;
 }
 
+@media only screen and (max-width: 500px) {
+    div#carousel-upv.carousel.slide {
+        height: auto;
+        min-width: 0;
+    }
+}

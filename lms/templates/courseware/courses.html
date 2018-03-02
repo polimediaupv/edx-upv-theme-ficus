@@ -209,6 +209,7 @@
              $(this).attr('checked',false);
            });
            apply_course_filters();
+             $("#home-search")[0].value='';
         });
 
         $('.orgfilter_all').change(function() {
@@ -218,6 +219,7 @@
              $(this).attr('checked',false);
            });
            apply_course_filters();
+	     $("#home-search")[0].value='';
         });
 
         $('.availfilter').change(function() {
@@ -234,6 +236,7 @@
                });
             }
             apply_course_filters();
+	      $("#home-search")[0].value='';
         });
 
         $('.orgfilter').change(function() {
@@ -250,6 +253,7 @@
               });
             }
             apply_course_filters();
+            $("#home-search")[0].value='';
         });
 
         // search courses

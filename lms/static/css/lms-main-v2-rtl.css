@@ -8229,6 +8229,18 @@ a:hover {
   font-weight: 600; }
 
 /* line 111, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+#my-courses {
+  width: auto; }
+
+/* line 115, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+#my-courses .course-info {
+  width: auto; }
+
+/* line 119, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+#my-courses .wrapper-course-actions {
+  width: auto; }
+
+/* line 123, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .enter-course, .empty-dashboard-message a {
   color: #d3d3d3 !important;
   background-color: #333 !important;
@@ -8237,21 +8249,26 @@ a:hover {
   border-radius: .25rem;
   box-shadow: none !important; }
 
-/* line 120, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 132, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .enter-course:hover, .empty-dashboard-message a:hover {
   color: #fff !important;
   background-color: #7f7f7f !important;
   border: none !important;
   box-shadow: none !important; }
 
-/* line 129, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+@media only screen and (max-width: 500px) {
+  /* line 140, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+  #dashboard-main {
+    min-width: 0; } }
+
+/* line 147, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 1rem;
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
-/* line 136, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 154, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 body.view-in-course .course-wrapper,
 body.view-in-course .profile-wrapper,
 body.view-in-course .instructor-dashboard-wrapper-2,
@@ -8261,38 +8278,38 @@ body.view-in-course .static_tab_wrapper {
   max-width: none;
   margin: 0; }
 
-/* line 146, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 164, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .wrapper-course-material .course-material {
   padding: 0 !important;
   margin: 0 0 0 15px;
   max-width: none; }
 
-/* line 152, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 170, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .wrapper-course-material .course-material .course-tabs {
   padding: 0; }
 
-/* line 156, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 174, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .wrapper-course-material .course-tabs li a:visited.active {
   border-bottom-color: #333; }
 
-/* line 160, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 178, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .course-tabs .tab a, .course-tabs .tab a:visited {
   line-height: 20px;
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   font-weight: 400; }
 
-/* line 167, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 185, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .content-wrapper {
   min-height: 700px;
   max-width: none !important;
   margin: 0 auto; }
 
-/* line 173, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 191, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .content-wrapper .main-container {
   padding-bottom: 40px; }
 
-/* line 177, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 195, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .content-wrapper .container {
   max-width: none;
   width: auto;
@@ -8300,12 +8317,12 @@ body.view-in-course .static_tab_wrapper {
   margin-left: 15px;
   margin-right: 15px; }
 
-/* line 185, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 203, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 body.view-in-course .window-wrap {
   min-width: auto;
   background-color: whitesmoke; }
 
-/* line 192, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 210, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .courses-container {
   max-width: 85%;
   margin-top: 30px;
@@ -8315,14 +8332,14 @@ body.view-in-course .window-wrap {
   font-weight: 400;
   font-style: normal; }
 
-/* line 202, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 220, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .courses-container .courses {
   max-width: 1100px;
   width: 100% !important;
   float: none;
   margin: 0 auto; }
 
-/* line 209, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 227, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .courses-container .courses .course {
   border-bottom: 0px;
   box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.125);
@@ -8330,16 +8347,16 @@ body.view-in-course .window-wrap {
   padding: 0 0 0 0;
   width: 276px; }
 
-/* line 217, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 235, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .courses-container .courses .course .course-info {
   margin-top: -48px;
   transition: all 0.2s ease; }
 
-/* line 222, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 240, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .courses-container .courses .course .course-info:hover {
   margin-top: -200px; }
 
-/* line 226, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 244, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .courses-container .meta-info {
   background: rgba(0, 0, 0, 0.75);
   bottom: 6px;
@@ -8355,59 +8372,59 @@ body.view-in-course .window-wrap {
   -o-transition: all 0.2s ease;
   transition: all 0.2s ease; }
 
-/* line 242, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 260, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .courses-container .meta-info:hover {
   opacity: 0.1; }
 
-/* line 246, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 264, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .courses-container .courses .course .meta-info p {
   color: #fff;
   font-style: italic;
   line-height: 1.2em;
   padding: 4px 12px 5px; }
 
-/* line 253, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 271, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 #courses-container img {
   width: 276px;
   height: 200px; }
 
-/* line 258, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 276, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .courses-container .courses .course .course-info .course-organization {
   height: 23px; }
 
-/* line 262, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 280, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .courses-container .courses .course .course-info .course-code {
   line-height: 17px;
   height: 34px; }
 
-/* line 267, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 285, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .courses-container .courses .course .course-info .course-title {
   margin: 5px 0 10px 0;
   height: 50px;
   color: #333; }
 
-/* line 273, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 291, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .courses-container .courses .course {
   border-radius: 5px; }
 
-/* line 277, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 295, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .courses-container div.inner-wrapper {
   border-radius: 5px; }
 
-/* line 282, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 300, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .courses-container header.course-header {
   z-index: 3;
   opacity: 0.9;
   background-color: #d5d5d5;
   color: #333; }
 
-/* line 289, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 307, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .courses-container header.course-header .row {
   margin-left: 0;
   margin-right: 0;
   min-height: 48px; }
 
-/* line 295, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 313, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .courses-container header.course-header .title-link {
   margin-top: 4px;
   font-family: "Source Sans", "Open Sans", Verdana, Geneva, sans-serif, sans-serif;
@@ -8418,42 +8435,62 @@ body.view-in-course .window-wrap {
   text-transform: none;
   vertical-align: middle; }
 
-/* line 306, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 324, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .courses-container header.course-header .info-link {
   margin-top: 8px; }
 
-/* line 310, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 328, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .course .course-info .course-info header.course-profile {
   padding-top: 0px; }
 
-/* line 314, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 332, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .course .course-info header.course-profile {
   height: 100%; }
 
-/* line 318, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 336, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .course .course-info .course-profile div.col-md-11 {
   margin-bottom: 20px; }
 
-/* line 322, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 340, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .course .course-info .course-sidebar .important-dates .course-enroll-item {
   display: flex;
   align-items: center;
   justify-content: center; }
 
-/* line 328, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 346, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .course .course-info .course-sidebar .important-dates a.course-enroll-item {
   background-color: #333;
   border: none; }
 
-/* line 333, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 351, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .course .course-info .course-sidebar .important-dates a.course-enroll-item:hover {
   color: #fff !important; }
 
-/* line 337, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 355, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .course .course-info .container {
   min-height: 450px; }
 
-/* line 343, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 359, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+.courses-other {
+  padding: 50px 15px 50px 30px; }
+
+@media only screen and (max-width: 500px) {
+  /* line 365, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+  #courses-container {
+    margin-top: 10px; }
+  /* line 368, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+  .courses-other {
+    padding: 0;
+    -ms-transform: scale(0.7, 0.7);
+    -webkit-transform: scale(0.7, 0.7);
+    transform: scale(0.7, 0.7); } }
+
+/* line 376, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+.courses-other .col-xs-4 {
+  margin-top: 9px;
+  margin-right: 5px; }
+
+/* line 384, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 #courses-container div.section-title {
   position: relative;
   margin: 0 -25px;
@@ -8466,7 +8503,7 @@ body.view-in-course .window-wrap {
   margin-bottom: 15px;
   padding-left: 10px; }
 
-/* line 356, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 397, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 #courses-container div.section-title:after, #courses-container div.section-title:before {
   content: "";
   display: block;
@@ -8477,93 +8514,93 @@ body.view-in-course .window-wrap {
   border-style: solid;
   border-color: #222 transparent; }
 
-/* line 367, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 408, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 #courses-container div.section-title:before {
   border-width: 25px 0 0 25px;
   left: 0; }
 
-/* line 371, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 412, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 #courses-container div.section-title:after {
   border-width: 25px 25px 0 0;
   right: 0; }
 
-/* line 377, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 418, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .login-register-content h2 {
   color: #c00; }
 
-/* line 384, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 425, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 #bottom-panel .row {
   margin-left: 0;
   margin-right: 0; }
 
-/* line 389, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 430, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .wrapper-footer {
   background: #333 !important;
   color: #d2d2d2 !important;
   margin: 0 !important;
   padding: 25px 10px 30px 10px !important; }
 
-/* line 396, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 437, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .wrapper-footer footer#footer-openedx .colophon .nav-colophon a:hover {
   color: #fff !important;
   border-bottom: 1px dotted #fff !important; }
 
-/* line 401, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 442, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .wrapper-footer footer#footer-openedx .references {
   margin: 0 !important; }
 
-/* line 405, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 446, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .wrapper-footer footer#footer-openedx .nav-legal a:hover {
   color: #fff !important;
   border-bottom: 1px dotted #fff !important; }
 
-/* line 410, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 451, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .wrapper-footer a#poweredbyopenedx:hover {
   border-bottom: none !important; }
 
-/* line 414, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 455, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .wrapper-footer footer#footer-openedx {
   max-width: none;
   margin-left: auto;
   margin-right: auto; }
 
-/* line 420, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 461, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .wrapper-footer footer#footer-openedx .colophon {
   margin: 0 !important; }
 
-/* line 424, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 465, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .wrapper-footer footer#footer-openedx .colophon .nav-colophon {
   margin: 5px 0 30px 0 !important; }
 
-/* line 428, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 469, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .wrapper-footer footer#footer-openedx .colophon .nav-colophon ol {
   margin: 0 !important; }
 
-/* line 432, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 473, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .wrapper-footer footer#footer-openedx .nav-social li {
   margin: 0 !important; }
 
-/* line 436, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 477, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .wrapper-footer footer#footer-openedx .copyright {
   color: #767676 !important; }
 
-/* line 443, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 484, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .wiki-wrapper section.wiki .breadcrumbs-header {
   padding: 10px 0 40px; }
 
-/* line 447, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 488, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .wiki-wrapper section.wiki .breadcrumb {
   padding: 0;
   background-color: transparent; }
 
-/* line 452, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 493, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .wiki-wrapper section.wiki .breadcrumb li.active {
   font-weight: 800; }
 
-/* line 459, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 500, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 div#email-settings-modal.modal, div#email-settings-modal.leanModal_box, div#unenroll-modal.modal.unenroll-modal, div#unenroll-modal.unenroll-modal.leanModal_box {
   bottom: initial; }
 
-/* line 466, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
+/* line 507, /edx/app/themes/upv/lms/static/sass/_overrides.scss */
 .wrapper-account-settings .wrapper-header .account-nav {
   margin: 0; }

@@ -24,31 +24,30 @@
     margin: 0 auto;
     padding: 0 12.5px;
     width: 100%;
-    }
+}
 
 
-    .banner-img{
-        width: 450px;
-    }
+.banner-img{
+    width: 450px;
+}
 
-    .hidden-section{
+.hidden-section{
         display: none!important;
-    }   
-    @media only screen and (max-width: 767px)
-    {
-        .toggle-tabs {
-            display:none;
-        } 
-        .details section {
-            display:block!important;
-            border-bottom:5px solid #065683;
-        }
-        .details section.faq.hidden-section {
-            border: none;
-        }
-    }    
-
-
+}
+   
+@media only screen and (max-width: 767px)
+{
+    .toggle-tabs {
+        display:none;
+    } 
+    .details section {
+        display:block!important;
+        border-bottom:5px solid #065683;
+    }
+    .details section.faq.hidden-section {
+        border: none;
+    }
+}    
 
 @media only screen and (min-width: 768px){
     .tab-nav {

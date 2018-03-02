@@ -108,6 +108,18 @@ a:hover {
     font-weight: 600;
 }
 
+#my-courses {
+    width: auto;
+}
+
+#my-courses .course-info {
+    width: auto;
+}
+
+#my-courses .wrapper-course-actions {
+    width: auto;
+}
+
 .enter-course, .empty-dashboard-message a {
     color: #d3d3d3 !important;
     background-color: #333 !important;
@@ -122,6 +134,12 @@ a:hover {
     background-color: #7f7f7f !important;
     border: none !important;
     box-shadow: none !important;
+}
+
+@media only screen and (max-width: 500px) {
+   #dashboard-main {
+       min-width: 0;
+   }
 }
 
 // Contenedor general y courseware
@@ -337,6 +355,29 @@ body.view-in-course .window-wrap {
 .course .course-info .container {
     min-height: 450px;
 }
+
+.courses-other {
+    padding: 50px 15px 50px 30px;
+}
+
+@media only screen and (max-width: 500px) {
+
+    #courses-container {
+        margin-top: 10px;
+    }
+    .courses-other {  
+        padding: 0;
+        -ms-transform: scale(0.7, 0.7); 
+        -webkit-transform: scale(0.7, 0.7); 
+        transform: scale(0.7, 0.7);
+    }
+}
+
+.courses-other .col-xs-4 {
+    margin-top: 9px;
+    margin-right: 5px;
+}
+
 
 // Búsqueda de cursos
 
