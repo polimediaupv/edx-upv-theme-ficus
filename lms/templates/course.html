@@ -5,8 +5,6 @@ from django.utils import timezone
 from django.utils.timezone import datetime
 from django.utils.translation import ugettext as _
 from django.core.urlresolvers import reverse
-from courseware.courses import get_course_about_section
-from courseware.courses import get_course
 %>
 <%page args="course" expression_filter="h"/>
 <article class="course" id="${course.id}" role="region" aria-label="${course.display_name_with_default}" org="${course.org}">
@@ -32,17 +30,12 @@ from courseware.courses import get_course
     </header>
     <div class="course-info" aria-hidden="true">
       <div class="course-image">
-        <img data-src="${course.course_image_url}" alt="${course.display_name_with_default} ${course.display_number_with_default}" />
+        <img data-src="${course.course_image_url}" alt="MOOC ${course.display_name_with_default} ${course.display_number_with_default}" />
       </div>
       <h2 class="course-name">
-        <!--<span class="course-organization">${course.display_org_with_default}</span>
+        <span class="course-organization">${course.display_org_with_default}</span>
         <span class="course-code">${course.display_number_with_default}</span>
-        <span class="course-title">${course.display_name_with_default}</span>-->
-        <%
-		courseobject = get_course(course.id)
-		courseDescription = get_course_about_section(request, courseobject, 'short_description')
-	    %>	      
-	${courseDescription}
+        <span class="course-title">${course.display_name_with_default}</span>
         % if course.start > timezone.now():
           <span class="course-availability" hidden="true">S</span> 
         % else:
