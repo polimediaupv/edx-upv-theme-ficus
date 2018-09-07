@@ -73,13 +73,13 @@
               <div id="availability-filter" class="panel-collapse collapse show">
                 <ul class="list-group">
                   <div class="list-group-item">
-                    <h6><input class="availfilter_all" type="checkbox" checked/> Todos <span class="badge">${total_cursos}</span></h6>
+                    <h6><input class="availfilter_all" type="checkbox"/> Todos <span class="badge">${total_cursos}</span></h6>
                   </div>
                   <div class="list-group-item">
-                    <h6><input class="availfilter" type="checkbox" value="C" /> Cursos en marcha <span class="badge">${avail_C}</span></h6>
+                    <h6><input class="availfilter" type="checkbox" value="C" checked /> Cursos en marcha <span class="badge">${avail_C}</span></h6>
                   </div>
                   <div class="list-group-item">
-                    <h6><input class="availfilter" type="checkbox" value="S" /> Todavía no iniciados <span class="badge">${avail_S}</span></h6>
+                    <h6><input class="availfilter" type="checkbox" value="S" checked /> Todavía no iniciados <span class="badge">${avail_S}</span></h6>
                   </div>
                   <div class="list-group-item">
                     <h6><input class="availfilter" type="checkbox" value="A" /> Archivados <span class="badge">${avail_A}</span></h6>
@@ -161,8 +161,8 @@
         });
 
         // filter definition 
-        var avail_filter = [];
-        var avail_filter_all = true;
+        var avail_filter = ["C", "S"];
+        var avail_filter_all = false;
         var org_filter = [];
         var org_filter_all = true;
 
@@ -208,18 +208,19 @@
            $('.availfilter').each(function() {
              $(this).attr('checked',false);
            });
-           apply_course_filters();
-             $("#home-search")[0].value='';
+           apply_course_filters();		
+             search($("#home-search")[0].value);
         });
 
         $('.orgfilter_all').change(function() {
+	   console.log('debug');
            org_filter = [];
            org_filter_all = $(this).is(':checked');
            $('.orgfilter').each(function() {
              $(this).attr('checked',false);
            });
            apply_course_filters();
-	     $("#home-search")[0].value='';
+	     search($("#home-search")[0].value);
         });
 
         $('.availfilter').change(function() {
@@ -236,7 +237,7 @@
                });
             }
             apply_course_filters();
-	      $("#home-search")[0].value='';
+	      search($("#home-search")[0].value);
         });
 
         $('.orgfilter').change(function() {
@@ -253,7 +254,7 @@
               });
             }
             apply_course_filters();
-            $("#home-search")[0].value='';
+            search($("#home-search")[0].value);
         });
 
         // search courses
@@ -305,5 +306,20 @@
         });
 
     </script>
+<script type="text/javascript">
+                $(".edxorglink").unbind().click(function(event) {
+                    event.preventDefault();
+                    if (checkCookie(this.attributes['courseid'].value) == "True")
+                    {
+                        window.location.href=this.attributes['edxorg'].value;
+                    }
+                    else
+                    {
+                        SetCookie(this.attributes['courseid'].value,"True",30);
+                        window.location.href=this.attributes['local'].value
+                    }
+                    return false;
+                  });
+      </script>
 </div>
 </main>

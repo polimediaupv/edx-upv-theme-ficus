@@ -1,0 +1,5 @@
+User-agent:*
+Disallow: /admin/
+Disallow: /account/password/
+Sitemap: https://www.upvx.es/sitemap.xml
+

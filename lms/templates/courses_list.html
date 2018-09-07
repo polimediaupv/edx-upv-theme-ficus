@@ -37,7 +37,7 @@
       future = sorted(future, key=lambda course: course.start)
       past = sorted(past, key=lambda course: course.start,reverse=True)
       courses_highlighted= future + past
-      courses_edxorg = sorted(courses_edxorg, key=lambda course: course.start)
+      courses_edxorg = sorted(courses_edxorg, key=lambda course: course.start, reverse=True)
   %>
 
   <section class="courses-highlighted">

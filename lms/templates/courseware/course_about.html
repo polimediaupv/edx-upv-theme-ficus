@@ -16,6 +16,11 @@ from openedx.core.lib.courses import course_image_url
 <script type="text/javascript" src="${static.url("js/bootstrap/bootstrap.bundle.min.js")}"></script>
 <script type="text/javascript" src="${static.url("js/bootstrap/bootstrap.min.js")}"></script>
 
+<%block name="title">
+      <title>
+        ${course.display_name_with_default_escaped} - Curso MOOC UPV[X]
+      </title>
+</%block>
 
 <%block name="headextra">
   ## OG (Open Graph) title and description added below to give social media info to display
@@ -29,7 +34,11 @@ from openedx.core.lib.courses import course_image_url
       $("#class_enroll_form").submit();
       event.preventDefault();
     });
-     % if course.display_org_with_default.lower() == "edxorg":
+     % if course.display_org_with_default.lower() == "edxorg" and course.location.run == "v2":
+
+			setTimeout(function(){window.location.href = "https://www.edx.org/es/course/${course.display_number_with_default}";
+                }, 30000);
+     % elif course.display_org_with_default.lower() == "edxorg":
         
             setTimeout(function(){window.location.href = "https://www.edx.org/course/${course.display_number_with_default}-upvalenciax-${course.location.run}";
         	}, 30000);
@@ -112,6 +121,23 @@ from openedx.core.lib.courses import course_image_url
 </%block>
 
 <%block name="pagetitle">${course.display_name_with_default_escaped}</%block>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "schema:Course",
+  "name": "${course.display_name_with_default_escaped}",
+  % if get_course_about_section(request, course, 'short_description').strip() != "":
+  "description":  "${get_course_about_section(request, course, 'short_description')}",
+  % else:
+  "description": "Curso Mooc de la UPV",
+  % endif
+  "provider": {
+    "@type": "Organization",
+    "name": "Universidad Politécnica de Valencia - UPV",
+    "sameAs": "http://www.upv.es"
+  }
+}
+</script>
 
 <section id="about-course-info" class="course-info">
 
@@ -126,7 +152,35 @@ from openedx.core.lib.courses import course_image_url
 			</h1>
 		    </hgroup>
                     <div class="main-cta">
-                        % if course.display_org_with_default.lower() == "edxorg":
+                         %if user.is_authenticated() and registered:
+                          <span class="register disabled"><h3>${_("You are enrolled in this course")}</h3></span>
+		          %if show_courseware_link:
+		            <a href="${course_target}">
+		              <strong>${_("View Course")}</strong>
+		            </a>
+		          %endif
+
+		        %elif in_cart:
+		          <span class="add-to-cart">
+		            ${_('This course is in your <a href="{cart_link}">cart</a>.').format(cart_link=cart_link)}
+		          </span>
+		        % elif is_course_full:
+		          <span class="register disabled">
+		            <h3>${_("Course is full")}</h3>
+		          </span>
+		        % elif invitation_only and not can_enroll:
+		          <span class="register disabled"><h3>${_("Enrollment in this course is by invitation only")}</h3></span>
+		        ## Shib courses need the enrollment button to be displayed even when can_enroll is False,
+		        ## because AnonymousUsers cause can_enroll for shib courses to be False, but we need them to be able to click
+		        ## so that they can register and become a real user that can enroll.
+		        % elif not is_shib_course and not can_enroll:
+		          <span class="register disabled"><h3>${_("Enrollment is Closed")}</h3></span>
+
+                        % elif course.display_org_with_default.lower() == "edxorg" and course.location.run == "v2":
+                          <a href="https://www.edx.org/es/course/${course.display_number_with_default}" class="btn btn-primary registerstyle" onclick="SetCookie('${course.id.to_deprecated_string().replace("/","_")}','True',30);">
+                              Este curso se realizará en edx.org
+                        </a>
+                        % elif course.display_org_with_default.lower() == "edxorg":
 		          <a href="https://www.edx.org/course/${course.display_number_with_default}-upvalenciax-${course.location.run}" class="btn btn-primary registerstyle" onclick="SetCookie('${course.id.to_deprecated_string().replace("/","_")}','True',30);">
 		              Este curso se realizará en edx.org
 	          	</a>

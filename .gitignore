@@ -1,6 +1,7 @@
 # Temporal files
 *.old
 *.ant
+*.back
 
 # Distribution / packaging
 .Python
