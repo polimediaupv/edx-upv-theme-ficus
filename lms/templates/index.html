@@ -11,6 +11,24 @@ from openedx.core.djangolib.markup import HTML, Text
 <link rel="stylesheet" href="${static.url("css/bootstrap/bootstrap.min.css")}">
 <script type="text/javascript" src="${static.url("js/bootstrap/bootstrap.bundle.min.js")}"></script>
 <script type="text/javascript" src="${static.url("js/bootstrap/bootstrap.min.js")}"></script>
+<script type="application/ld+json">
+{ 
+  "@context": "http://schema.org", 
+  "@type": "WebSite", 
+  "url": "https://upvx.es/", 
+  "name": "MOOC, cursos gratuitos online masivos de la UPV en España, UPV[X]. Más de 70 MOOCs a tu disposición.",
+  "description": "MOOC cursos gratuitos online masivos de la UPV en España, únete a nosotros y descubre una nueva forma de aprender",
+  "sameAs": ["https://www.facebook.com/upvx.es/", "https://twitter.com/upvx"],
+  "publisher": "Universitat Politècnica de València",
+  "keywords": ["MOOC","curso","gratis","gratuito","masivo","online"],
+  "image": "https://upvx.es/static/upv/images/upvx-logo.png",
+  "potentialAction": { 
+    "@type": "SearchAction", 
+    "target": "https://upvx.es/courses?search_query={search_term}", 
+    "query-input": "required name=search_term" } 
+    }
+</script>
+
 
 <main id="main" aria-label="Content" tabindex="-1">
     <section class="home">
