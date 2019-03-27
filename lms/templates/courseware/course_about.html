@@ -140,8 +140,10 @@ instructors = json.dumps(instructors)
   "@type": "schema:Course",
   "@id" : "https://upvx.es/courses/${course.id}/about",
   "name": "${course.display_name_with_default_escaped}",
-  % if len( BeautifulSoup(get_course_about_section(request, course, 'overview')).select("section.prerequisites > p")) > 0:
+  % if len( BeautifulSoup(get_course_about_section(request, course, 'overview')).select("section.info > p")) > 0:
   "description": "${ BeautifulSoup(get_course_about_section(request, course, 'overview')).select("section.info > p")[1].text}" ,
+  % elif len( BeautifulSoup(get_course_about_section(request, course, 'overview')).select("section.about > p")) > 0:
+  "description": "${ BeautifulSoup(get_course_about_section(request, course, 'overview')).select("section.about > p")[1].text}" , 
   % else:
   "description": "Curso Mooc de la UPV",
   % endif
