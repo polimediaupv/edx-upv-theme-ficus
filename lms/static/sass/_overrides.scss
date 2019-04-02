@@ -140,6 +140,10 @@ a:hover {
    #dashboard-main {
        min-width: 0;
    }
+
+   .wrapper-profile-sections {
+       min-width: 0 !important;
+   }
 }
 
 // Contenedor general y courseware
@@ -216,6 +220,12 @@ body.view-in-course .window-wrap {
 }
 
 // Listado de cursos
+
+.course-description {
+    font-size: 0.5em;
+    height: 110px;
+    display: block;
+}
 
 .courses-container {
 	max-width: 85%;

@@ -4,6 +4,13 @@
 article, aside, details, figcaption, figure, footer, header, nav, section {
   display: block; }
 
+
+.course-description {
+    font-size: 0.5em;
+    height: 110px;
+    display: block;
+}
+
 /* line 4, /edx/app/edxapp/edx-platform/lms/static/sass/base/_reset.scss */
 audio, canvas, video {
   display: inline-block;
