@@ -5,6 +5,8 @@
   import datetime
   from django import template
   from openedx.core.djangolib.js_utils import dump_js_escaped_json
+  from openedx.core.djangoapps.models.course_details import CourseDetails
+ 
 %>
 <%inherit file="../main.html" />
 <%
@@ -31,10 +33,18 @@
                 total_cursos=0
                 for course in courses:
                     if course.display_org_with_default.lower() != 'poc':
-                      if course.display_org_with_default in orgs:
-                        orgs[course.display_org_with_default] = orgs[course.display_org_with_default] + 1 
+                      short_description = CourseDetails.fetch_about_attribute(course.id, 'short_description')
+                      category = "Sin asignar"
+                      if short_description == None:
+                        category = 'Sin asignar'    
                       else:
-                        orgs[course.display_org_with_default] = 1
+                        if '##' in short_description:
+                          splitted= short_description.split('##')
+                          category= splitted[1]
+                      if category in orgs:
+                        orgs[category] = orgs[category] + 1 
+                      else:
+                        orgs[category] = 1
 
                       if course.start > timezone.now():
                         avail_S += 1
@@ -175,6 +185,7 @@
           $(".courses-listing-item").each(function() {
             var avail = $(this).find('span.course-availability').text();
             var org = $(this).find('span.course-organization').text();
+            console.log('patata');
             if (avail_filter.indexOf(avail) >= 0 || avail_filter_all) {
               if (org_filter.indexOf(org) >= 0 || org_filter_all) {
                 $(this).show();
@@ -199,6 +210,17 @@
           } else {
             $($(".notfound")[0]).css("display","block");
           }
+	  for (i=0;i<$(".orgfilter").length;i++){
+		filtro = $(".orgfilter")[i].value;
+		valor = 0;
+		// $($("input[value='"+filtro+"']+span")[0]).text()*1;
+		visibles = $("p.university:visible");
+		for (j=0;j<visibles.length;j++){	
+		if (visibles[j].innerHTML==filtro)
+			valor++;
+		}
+	   $($("input[value='"+filtro+"']+span")[0]).text(valor);
+	   }
         }
 
         // filter change triggers
@@ -277,6 +299,18 @@
             } else {
                 $(this).hide();
             } 
+	    for (i=0;i<$(".orgfilter").length;i++){
+                filtro = $(".orgfilter")[i].value;
+                valor = 0;
+                // $($("input[value='"+filtro+"']+span")[0]).text()*1;
+                visibles = $("p.university:visible");
+                for (j=0;j<visibles.length;j++){        
+                if (visibles[j].innerHTML==filtro)
+                        valor++;
+                }
+           $($("input[value='"+filtro+"']+span")[0]).text(valor);
+           }
+
           });
 
 	  if (foundAny) {
