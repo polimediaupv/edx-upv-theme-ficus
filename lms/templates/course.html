@@ -6,7 +6,7 @@ from django.utils.timezone import datetime
 from django.utils.translation import ugettext as _
 from django.core.urlresolvers import reverse
 from courseware.courses import get_course_about_section, get_course_by_id
-
+from openedx.core.djangoapps.models.course_details import CourseDetails
 %>
 <%page args="course" expression_filter="h"/>
 <article class="course" id="${course.id}" role="region" aria-label="${course.display_name_with_default}" org="${course.org}">
@@ -35,9 +35,23 @@ from courseware.courses import get_course_about_section, get_course_by_id
         <img data-src="${course.course_image_url}" alt="MOOC ${course.display_name_with_default} ${course.display_number_with_default}" />
       </div>
       <h2 class="course-name">
-        <span class="course-organization">${course.display_org_with_default}</span>
-        <span class="course-code">${course.display_number_with_default}</span>
-        <span class="course-title">${course.display_name_with_default}</span>
+	<%
+	short_description = CourseDetails.fetch_about_attribute(course.id, 'short_description')
+	category = "Sin asignar"
+	if short_description == None:
+	    short_description = "Mooc online de la upv.\n Ver detalles del curso"
+	    category = 'Sin asignar'	
+	else:
+	    if '##' in short_description:
+                splitted= short_description.split('##')
+	        short_description =splitted[0]
+		category= splitted[1]
+        %>
+        <span class="course-description" style="font-size: 0.5em;
+    height: 110px;
+    display: block;
+    white-space: pre-line;" >${ short_description | n }</span>
+        <span class="course-organization" hidden>${ category }</span>
         % if course.start > timezone.now():
           <span class="course-availability" hidden="true">S</span> 
         % else:
@@ -79,7 +93,7 @@ from courseware.courses import get_course_about_section, get_course_by_id
     </div>
     </div>
     <div class="meta-info">
-      <p class="university">${course.display_org_with_default | h}</p>
+      <p class="university">${category | h}</p>
     </div>
     <meta property="keywords" content="cursos mooc en universidad valencia español">
   </a>
