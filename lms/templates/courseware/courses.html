@@ -185,7 +185,6 @@
           $(".courses-listing-item").each(function() {
             var avail = $(this).find('span.course-availability').text();
             var org = $(this).find('span.course-organization').text();
-            console.log('patata');
             if (avail_filter.indexOf(avail) >= 0 || avail_filter_all) {
               if (org_filter.indexOf(org) >= 0 || org_filter_all) {
                 $(this).show();
@@ -341,6 +340,22 @@
 
     </script>
 <script type="text/javascript">
+function edxorglink(e){
+ if (checkCookie(e.attributes['courseid'].value) == "True")
+                    {
+                        window.location.href=e.attributes['edxorg'].value;
+                    }
+                    else
+                    {
+                        SetCookie(e.attributes['courseid'].value,"True",30);
+                        window.location.href=e.attributes['local'].value
+                    }
+}
+
+
+
+
+/*
                 $(".edxorglink").unbind().click(function(event) {
                     event.preventDefault();
                     if (checkCookie(this.attributes['courseid'].value) == "True")
@@ -354,6 +369,7 @@
                     }
                     return false;
                   });
+*/
       </script>
 </div>
 </main>
