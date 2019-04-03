@@ -131,12 +131,11 @@
 	        <section class="notfound" style="display:none" >
 	            No se han encontrado cursos con su criterio de búsqueda.
 	        </section>
-                <section class="courses" style="display:block">
+                <section class="courses" style="display:block">                    
                     %for course in courses_highlighted:
-                        % if course.display_org_with_default.lower() != "poc" :                                
+                        % if course.display_org_with_default.lower() != "poc" :                                                          
 	                    <span class="courses-listing-item" style="display:inline-block">
                                 <%include file="../course.html" args="course=course" />
-                                <%include file="./about_hide.html" args="course=course"/>                                
                             </span>
                         % endif
                     %endfor	
@@ -280,25 +279,20 @@
 
         // search courses
         function search(search_query) {
-
+          console.log("search");
           var foundAny=false;
           search_query = search_query.toLowerCase();
-
-          $('.courses-listing-item:visible').each(function() {
-            var shortAuxdiv = document.createElement("div");
-            shortAuxdiv.innerHTML= $($(this).find('meta')[0]).content
-            var shortDesc = shortAuxdiv.textContent || shortAuxdiv.innerText || "";
-            var descAuxdiv = document.createElement("div");
-            descAuxdiv.innerHTML= $($(this).find('meta')[1]).content
-            var desc = descAuxdiv.textContent || descAuxdiv.innerText || "";
+          $('.courses-listing-item:visible').each(function() {           
             var title = $($(this).find("article")[0]).attr("aria-label")
-            if ( title.toLowerCase().includes(search_query) || desc.toLowerCase().includes(search_query) || shortDesc.toLowerCase().includes(search_query) ) {
+            if ( title.toLowerCase().includes(search_query)){                
                 $(this).show();
-		foundAny=true;
+                foundAny=true;
             } else {
                 $(this).hide();
             } 
-	    for (i=0;i<$(".orgfilter").length;i++){
+        });
+        
+          for (i=0;i<$(".orgfilter").length;i++){
                 filtro = $(".orgfilter")[i].value;
                 valor = 0;
                 // $($("input[value='"+filtro+"']+span")[0]).text()*1;
@@ -307,17 +301,17 @@
                 if (visibles[j].innerHTML==filtro)
                         valor++;
                 }
-           $($("input[value='"+filtro+"']+span")[0]).text(valor);
+           		  $($("input[value='"+filtro+"']+span")[0]).text(valor);
            }
 
-          });
 
-	  if (foundAny) {
+          if (foundAny) {
             $($(".notfound")[0]).css("display","none"); 
           } else {
-	    $($(".notfound")[0]).css("display","block");
-	  }
-        }
+            $($(".notfound")[0]).css("display","block");
+          }
+        }	
+
 
         // serach text change trigger
         $( "#home-search" ).keyup(function() {
