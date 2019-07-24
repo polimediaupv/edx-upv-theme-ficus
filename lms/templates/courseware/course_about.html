@@ -176,8 +176,11 @@ instructors = json.dumps(instructors)
 }
 </script>
 
-<section id="about-course-info" class="course-info">
+<%
+	blacklist =['course-v1:poc+cubipodo+2019-01','course-v1:poc+encofradosycimbras+2019-01','course-v1:poc+excel201+2019-01', 'course-v1:poc+excel101+2019-01', 'course-v1:poc+ods+2019-01', 'course-v1:poc+bi+2019-01', 'course-v1:poc+flashdiet+2019-01', 'course-v1:poc+powerpoint+2019-01', 'course-v1:poc+tcci+2019-01', 'course-v1:poc+patrimonioculturalvalenciano+2019-01', 'course-v1:poc+android+2019-01', 'course-v1:poc+excel202+2019-01', 'course-v1:poc+fundamentosmecanica+2019-01', 'course-v1:poc+cienciadatos+2019-01', 'course-v1:poc+dmt+2019-01', 'course-v1:poc+fundamentosmecanica+2019-01', 'course-v1:poc+igp+2019-01']
+%>
 
+<section id="about-course-info" class="course-info">
   <header class="course-profile">
     <div class="intro-inner-wrapper">
 	<div class="table">
@@ -188,7 +191,7 @@ instructors = json.dumps(instructors)
 			 ${course.display_name_with_default_escaped}
 			</h1>
 		    </hgroup>
-                    <div class="main-cta">
+                    <div class="main-cta">			
                          %if user.is_authenticated() and registered:
                           <span class="register disabled"><h3>${_("You are enrolled in this course")}</h3></span>
 		          %if show_courseware_link:
@@ -205,6 +208,18 @@ instructors = json.dumps(instructors)
 		          <span class="register disabled">
 		            <h3>${_("Course is full")}</h3>
 		          </span>
+			% elif unicode(course.id) in blacklist:
+			    % if  user.is_authenticated():
+				% if user.email[-6:]=='upv.es' or user.email[-10:]=='upv.edu.es':
+				<a href="#" class="btn btn-primary register registerstyle">
+                                   ${_("Enroll")}
+                                </a>
+				% else:
+					<span class="register disabled"><h3>Este curso sólo esta disponible para personal y alumnos de la UPV</h3></span>
+				% endif
+			    % else:
+				<span class="register disabled"><h3>Necesitas iniciar sesión poder acceder a este curso</h3></span>                    
+			    % endif
 		        % elif invitation_only and not can_enroll:
 		          <span class="register disabled"><h3>${_("Enrollment in this course is by invitation only")}</h3></span>
 		        ## Shib courses need the enrollment button to be displayed even when can_enroll is False,
