@@ -1,6 +1,7 @@
 <%def name="online_help_token()"><% return "course" %></%def>
 <%namespace name='static' file='static_content.html'/>
 <%!
+import re
 from django.utils import timezone
 from django.utils.timezone import datetime
 from django.utils.translation import ugettext as _
@@ -38,20 +39,29 @@ from openedx.core.djangoapps.models.course_details import CourseDetails
 	<%
 	short_description = CourseDetails.fetch_about_attribute(course.id, 'short_description')
 	category = "Sin asignar"
+        lang = "Español"
 	if short_description == None:
 	    short_description = "Mooc online de la upv.\n Ver detalles del curso"
 	    category = 'Sin asignar'	
+            lang= "Español"
 	else:
 	    if '##' in short_description:
-                splitted= short_description.split('##')
-	        short_description =splitted[0]
-		category= splitted[1]
+                categories =  re.findall('##([^%%]*)',short_description)
+                if len(categories)>0:
+                    category=categories[0]
+                    short_description=short_description.replace('##'+category,'')
+            if '%%' in short_description:    
+                langf = re.findall('%%([^##]*)',short_description)
+                if len(langf)>0:
+                    lang = langf[0]
+                    short_description=short_description.replace('%%'+lang,'')
         %>
         <span class="course-description" style="font-size: 0.5em;
     height: 110px;
     display: block;
     white-space: pre-line;" >${ short_description | n }</span>
         <span class="course-organization" hidden>${ category }</span>
+        <span class="course-lang" hidden>${lang}</span>
         % if course.start > timezone.now():
           <span class="course-availability" hidden="true">S</span> 
         % else:

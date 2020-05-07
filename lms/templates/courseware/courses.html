@@ -1,12 +1,12 @@
 <%!
   import json
+  import re
   from django.utils.translation import ugettext as _
   from django.utils import timezone
   import datetime
   from django import template
   from openedx.core.djangolib.js_utils import dump_js_escaped_json
   from openedx.core.djangoapps.models.course_details import CourseDetails
- 
 %>
 <%inherit file="../main.html" />
 <%
@@ -27,6 +27,7 @@
     <%          
                 courses_highlighted=[]
                 orgs={}
+                langs={}
                 avail_A=0
                 avail_S=0
                 avail_C=0
@@ -35,17 +36,28 @@
                     if course.display_org_with_default.lower() != 'poc':
                       short_description = CourseDetails.fetch_about_attribute(course.id, 'short_description')
                       category = "Sin asignar"
+                      lang="Español"
                       if short_description == None:
                         category = 'Sin asignar'    
+                        lang = 'Español'
                       else:
                         if '##' in short_description:
-                          splitted= short_description.split('##')
-                          category= splitted[1]
+			  categories =  re.findall('##([^%%]*)',short_description)
+                          if len(categories)>0:
+                            category=categories[0]
+                        if '%%' in short_description:
+                          ##lang="Inglés"
+                          langf = re.findall('%%([^##]*)',short_description)
+                          if len(langf)>0:
+                            lang = langf[0]
                       if category in orgs:
                         orgs[category] = orgs[category] + 1 
                       else:
                         orgs[category] = 1
-
+                      if lang in langs:
+                        langs[lang] = langs[lang] + 1
+                      else:
+                        langs[lang] = 1
                       if course.start > timezone.now():
                         avail_S += 1
                       else:
@@ -69,7 +81,7 @@
 <div class="row">
    <div id="search-panel" class="col-md-3 mx-auto">
       <div class="search-controls">
-          <h6 for="home-search" class="search-bar-label">Buscar Cursos</h6> 
+          <h6 for="home-search" class="search-bar-label">Buscar Cursos..</h6> 
           <input type="text" id="home-search" value="" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-haspopup="false" class="" placeholder="" spellcheck="false">
           
           <div class="panel-group" id="filters">
@@ -97,7 +109,27 @@
                 </ul>
               </div>
             </div>
-  
+
+	    <!--langfilter-->
+	      <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h6 class="panel-title">
+                    <a data-toggle="collapse" href="#lang-filter"><span class="fa fa-edit"></span> Idiomas</a>
+                  </h6>
+                </div>
+                <div id="org-filter" class="panel-collapse collapse show">
+                  <ul class="list-group">
+                    <div class="list-group-item">
+                      <h6><input class="langfilter_all" type="checkbox" checked/> Todos <span class="badge">${total_cursos}</span></h6>
+                    </div>
+                    %for lang,num in langs.items():
+                    <div class="list-group-item">
+                      <h6><input class="langfilter" type="checkbox" value="${lang}"/> ${lang} <span class="badge">${num}</span></h6>
+                    </div>
+                    %endfor
+                </div>
+            </div>
+            <!--langfilter-->
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h6 class="panel-title">
@@ -173,6 +205,8 @@
         var avail_filter = ["C", "S"];
         var avail_filter_all = false;
         var org_filter = [];
+        var lang_filter = [];
+        var lang_filter_all = true;
         var org_filter_all = true;
 
         // apply filters to courses list
@@ -184,21 +218,26 @@
           $(".courses-listing-item").each(function() {
             var avail = $(this).find('span.course-availability').text();
             var org = $(this).find('span.course-organization').text();
+            var lang = $(this).find('span.course-lang').text();
             if (avail_filter.indexOf(avail) >= 0 || avail_filter_all) {
               if (org_filter.indexOf(org) >= 0 || org_filter_all) {
-                $(this).show();
-                foundAny=true;
-                var imgs = $(this).find('img');
-                imgs.each(function() {
-                  var datasrc = $(this).attr('data-src');
-                  if ( datasrc && $(this).offset().top < ($(window).scrollTop() + $(window).height()) ) {
-                    $(this).attr('src', datasrc);
-                    $(this).removeAttr('data-src');
-                  };
-                });
+                 if (lang_filter.indexOf(lang) >= 0 || lang_filter_all) {              
+                   $(this).show();
+                   foundAny=true;
+                   var imgs = $(this).find('img');
+                   imgs.each(function() {
+                      var datasrc = $(this).attr('data-src');
+                      if ( datasrc && $(this).offset().top < ($(window).scrollTop() + $(window).height()) ) {
+                        $(this).attr('src', datasrc);
+                        $(this).removeAttr('data-src');
+                      };
+                   });
               } else {
                 $(this).hide();
               }
+            } else {
+              $(this).hide();
+            } 
             } else {
               $(this).hide();
             }
@@ -243,6 +282,17 @@
 	     search($("#home-search")[0].value);
         });
 
+         $('.langfilter_all').change(function() {
+           console.log('debuglang');
+           lang_filter = [];
+           lang_filter_all = $(this).is(':checked');
+           $('.langfilter').each(function() {
+             $(this).attr('checked',false);
+           });
+           apply_course_filters();
+             search($("#home-search")[0].value);
+        });
+
         $('.availfilter').change(function() {
             if (avail_filter_all) {
               avail_filter_all = false;
@@ -276,6 +326,23 @@
             apply_course_filters();
             search($("#home-search")[0].value);
         });
+        
+        $('.langfilter').change(function() {
+ 	  if (lang_filter_all) {
+            lang_filter_all = false;
+      	    $('.langfilter_all').attr('checked',false);
+    	  }
+ 	  var org = $(this)[0].value;
+	  if ($(this).is(':checked')) {
+	      lang_filter.push(org);
+	  } else {
+	  lang_filter = lang_filter.filter(function(item) {
+          return item !== org;
+	  });
+    	 }
+	   apply_course_filters();
+           search($("#home-search")[0].value);
+    	});
 
         // search courses
         function search(search_query) {
